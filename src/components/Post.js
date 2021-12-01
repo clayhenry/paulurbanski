@@ -8,7 +8,9 @@ const Post = ({post}) => {
     const heroImageContainer = useRef(null);
     const contentContainer = useRef(null);
     const postHeading = useRef(null);
-    const navigation = useRef(null)
+    const navigation = useRef(null);
+    let figures = [];
+   
 
     let currentImageTransform = 0;
     let appliedHidenClassTransition = false;
@@ -24,37 +26,66 @@ const Post = ({post}) => {
         }
       }
 
-      const scrollEffects= (()=>{
+const getFigures = ()=>{
+        figures = document.querySelectorAll(".wp-block-image"); 
+    }     
+ const scrollEffects= (()=>{
 
       
-if (window.scrollY > 130 && !appliedHidenClassTransition && navigation.current  && !navigation.current.classList.contains("hide-me-now") ){
+if (window.scrollY > 200 && !appliedHidenClassTransition && navigation.current  && !navigation.current.classList.contains("hide-me-now") ){
     navigation.current.classList.add("hide-me-now");
-    navigation.current.classList.remove("show-me-now")
+    navigation.current.classList.remove("show-me-now");
     appliedHidenClassTransition = true;
 } 
 
-if (window.scrollY < 130 && appliedHidenClassTransition && navigation.current && navigation.current.classList.contains("hide-me-now") ){
+if (window.scrollY < 200 && appliedHidenClassTransition && navigation.current && navigation.current.classList.contains("hide-me-now") ){
     appliedHidenClassTransition = false;
     navigation.current.classList.remove("hide-me-now");
-    navigation.current.classList.add("show-me-now")
-    
+    navigation.current.classList.add("show-me-now")  
 }
-
-
         if (heroImage.current){
 
-            // let size = window.scrollY  <= 0 ? 1 : 1 - window.scrollY /2000;
+            
 
-            contentContainer.current.style.transform = "translateY(-" + (window.scrollY /20) + "%)";
-            postHeading.current.style.transform = "translateY(-" + (window.scrollY /5) + "%)";
-            // postHeading.current.style.transform = "scale(" + size + ")";
-            heroImage.current.style.transform = "translate(-"+ currentImageTransform + "%, -" + (window.scrollY )/10 + "%)";
-            // heroImage.current.style.transform = "skewX(-" + (window.scrollY )/80 + "deg)";
+
+            let opacity = 1- (window.scrollY/100);  
+           
+            if (opacity <= 1){
+                postHeading.current.style.opacity = opacity;
+            }
+
+            if (window.scrollY > 150){
+                heroImage.current.classList.add("hide-me-now");
+                heroImage.current.classList.remove("show-me-now");
+            } 
+            if (window.scrollY < 150){
+                heroImage.current.classList.add("show-me-now");
+                heroImage.current.classList.remove("hide-me-now");
+            }
+
+            contentContainer.current.style.transform = "translateY(-" + (window.scrollY /40) + "%)";
+            postHeading.current.style.transform = "translateY(-" + (window.scrollY /10) + "%)";
+            heroImage.current.style.transform = "translate(-"+ currentImageTransform + "%, -" + (window.scrollY )/5 + "%)";
+
+        
+
+            [...figures].map((f)=>{
+                    if (window.scrollY  >= (f.offsetTop -50) && window.scrollY  <= (f.offsetTop + 50)){
+                
+
+                    f.classList.add("show-me-now") 
+                }
+
+       
+              
+            })
+    
         }
       })
 
       useEffect(() => {
     
+        getFigures();
         reportWindowSize(heroImage);
         scrollEffects();
       }, []);
@@ -62,7 +93,8 @@ if (window.scrollY < 130 && appliedHidenClassTransition && navigation.current &&
     
     window.addEventListener('resize', ()=>reportWindowSize(heroImage));
 
-    window.addEventListener('scroll', ()=>scrollEffects(heroImageContainer))
+    window.addEventListener('scroll', ()=>scrollEffects(heroImageContainer));
+
 
 
         return (
@@ -85,8 +117,9 @@ if (window.scrollY < 130 && appliedHidenClassTransition && navigation.current &&
                   <span style={{color: post.acf.bodytextcolor}} dangerouslySetInnerHTML={{__html: post.content['rendered']}}></span> 
                 
             </div>
-            <br /><br />
+            
             </div>
+           
             </>
       
         )

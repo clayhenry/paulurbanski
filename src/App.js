@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import {useState, useEffect} from 'react'
 import axios from 'axios'
 import './App.css';
+import './External.css'
 import Post from './components/Post';
 import Home from './components/Home';
 import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
