@@ -65,10 +65,8 @@ opacity: 0.7;
 
 .post-body {
   padding: 30px 0;
-
   position: absolute;
-  /* transition: all 0.5s;
-  transition-timing-function: ease-out; */
+
 }
 /* 
 .body-post-stub {
@@ -93,18 +91,16 @@ figure ul {
 }
 
 
-/* .blocks-gallery-grid img {
- 
-  width: 30%;
+
+  .blocks-gallery-item figure  {
+    padding: 0;
+    margin: 0;
   }
 
-
   .blocks-gallery-item figure img {
-    float: left;
-    display: inline-block;
-    height: auto;
-    margin: 10px;
-  } */
+    width: 95%;
+  }
+
 
 .post-body p {
   padding: 0 150px;

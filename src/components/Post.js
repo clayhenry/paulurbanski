@@ -31,13 +31,13 @@ const getFigures = ()=>{
     }     
  const scrollEffects= (()=>{
       
-if (window.scrollY > 650 && !appliedHidenClassTransition && navigation.current  && !navigation.current.classList.contains("hide-me-now") ){
+if (window.scrollY > 200 && !appliedHidenClassTransition && navigation.current  && !navigation.current.classList.contains("hide-me-now") ){
     navigation.current.classList.add("hide-me-now");
     navigation.current.classList.remove("show-me-now");
     appliedHidenClassTransition = true;
 } 
 
-if (window.scrollY < 650 && appliedHidenClassTransition && navigation.current && navigation.current.classList.contains("hide-me-now") ){
+if (window.scrollY < 200 && appliedHidenClassTransition && navigation.current && navigation.current.classList.contains("hide-me-now") ){
     appliedHidenClassTransition = false;
     navigation.current.classList.remove("hide-me-now");
     navigation.current.classList.add("show-me-now")  
@@ -50,11 +50,11 @@ if (window.scrollY < 650 && appliedHidenClassTransition && navigation.current &&
             //     postHeading.current.style.opacity = opacity;
             // }
 
-            if (window.scrollY > 350){
+            if (window.scrollY > 400){
                 heroImage.current.classList.add("hide-me-now");
                 heroImage.current.classList.remove("show-me-now");
             } 
-            if (window.scrollY < 350){
+            if (window.scrollY < 400){
                 heroImage.current.classList.add("show-me-now");
                 heroImage.current.classList.remove("hide-me-now");
             }
