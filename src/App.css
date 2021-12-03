@@ -106,8 +106,12 @@ figure ul {
   padding: 0 150px;
   padding-left: 200px;
   font-size: 1.3em;
-  line-height: 1.7rem;
+  line-height: 1.9rem;
   width: 50%;
+}
+
+.post-body p:first-child {
+  opacity: 0;
 }
 
 .post-body img {
@@ -191,10 +195,22 @@ figure ul {
   animation-fill-mode: forwards;
 }
 
+.hide-me-now-move{
+  animation: hide-me-now-move;
+  animation-duration: 0.9s;
+  animation-fill-mode: forwards;
+}
+
+.show-me-now-move{
+  animation: show-me-now-move;
+  animation-duration: 0.9s;
+  animation-fill-mode: forwards;
+}
+
 
 @keyframes hide-me-now {
   from {
-    opacity: 1;
+    opacity: 1; 
   }
   to {
     opacity: 0;
@@ -206,6 +222,23 @@ figure ul {
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes hide-me-now-move {
+  from {
+    opacity: 1; transform: translateY(0%);
+  }
+  to {
+    opacity: 0; transform: translateY(15%);
+  }
+}
+@keyframes show-me-now-move {
+  from {
+    opacity: 0; transform: translateY(15%);
+  }
+  to {
+    opacity: 1; transform: translateY(0%);
   }
 }
 

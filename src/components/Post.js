@@ -10,6 +10,7 @@ const Post = ({post}) => {
     const postHeading = useRef(null);
     const navigation = useRef(null);
     let figures = [];
+    let paragraphs = [];
 
 
     let currentImageTransform = 0;
@@ -28,7 +29,11 @@ const Post = ({post}) => {
 
 const getFigures = ()=>{
         figures = document.querySelectorAll("figure img"); 
+        paragraphs = [...document.querySelectorAll(".post-body p")]; 
     }     
+
+
+    
  const scrollEffects= (()=>{
       
 if (window.scrollY > 200 && !appliedHidenClassTransition && navigation.current  && !navigation.current.classList.contains("hide-me-now") ){
@@ -53,11 +58,28 @@ if (window.scrollY < 200 && appliedHidenClassTransition && navigation.current &&
             if (window.scrollY > 400){
                 heroImage.current.classList.add("hide-me-now");
                 heroImage.current.classList.remove("show-me-now");
+
+                // paragraphs[0].classList.remove("hide-me-now-move");
+                // paragraphs[0].classList.add("show-me-now-move");
+
             } 
             if (window.scrollY < 400){
                 heroImage.current.classList.add("show-me-now");
                 heroImage.current.classList.remove("hide-me-now");
+
+                // paragraphs[0].classList.add("hide-me-now-move");
+                // paragraphs[0].classList.remove("show-me-now-move");
             }
+
+            if (window.scrollY > 300){
+                paragraphs[0].classList.remove("hide-me-now-move");
+                paragraphs[0].classList.add("show-me-now-move");
+            }
+            if (window.scrollY < 300){
+                paragraphs[0].classList.add("hide-me-now-move");
+                paragraphs[0].classList.remove("show-me-now-move");
+            }
+
 
             // contentContainer.current.style.transform = "translateY(-" + (window.scrollY /40) + "%)";
             postHeading.current.style.transform = "translateY(" + (window.scrollY /2 ) + "%)";         
@@ -65,8 +87,11 @@ if (window.scrollY < 200 && appliedHidenClassTransition && navigation.current &&
 
             if (window.scrollY > 700 && window.scrollY > 800){
                 postHeading.current.style.transform = "translateY(0%)";     
+               
             }
+        
   
+     
             [...figures].map((f)=>{
 
                     let offset = 80
