@@ -1,3 +1,66 @@
+:root {/* Spacing */
+--global--spacing-unit: 20px;
+--global--spacing-measure: unset;
+--global--spacing-horizontal: 25px;
+--global--spacing-vertical: 30px;
+}
+
 .wp-block-image {
 	text-align: center;
+	padding: 0;
+    margin: 0;
+	width: 100%;
+}
+
+.blocks-gallery-grid, .wp-block-gallery {
+	text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.wp-block-gallery .blocks-gallery-item {
+    width: calc((100% - var(--global--spacing-unit)) / 2);
+}
+
+.wp-block-gallery {
+	margin: 0 auto;
+	width: 851px;
+}
+
+.wp-block-gallery .blocks-gallery-image,
+.wp-block-gallery .blocks-gallery-item {
+	width: calc((100% - var(--global--spacing-unit)) / 2);
+}
+
+.wp-block-gallery .blocks-gallery-image figcaption,
+.wp-block-gallery .blocks-gallery-item figcaption {
+	margin: 0;
+	color: var(--global--color-white);
+	font-size: var(--global--font-size-xs);
+}
+
+.wp-block-gallery .blocks-gallery-image figcaption a,
+.wp-block-gallery .blocks-gallery-item figcaption a {
+	color: var(--global--color-white);
+}
+
+.wp-block-gallery .blocks-gallery-image figcaption a:focus,
+.wp-block-gallery .blocks-gallery-item figcaption a:focus {
+	background-color: transparent;
+	outline: 2px solid var(--wp--style--color--link, var(--global--color-primary));
+	text-decoration: none;
+}
+
+.wp-block-gallery .blocks-gallery-image a:focus img,
+.wp-block-gallery .blocks-gallery-item a:focus img {
+	outline-offset: 2px;
+}
+
+gallery-item figure {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
 }

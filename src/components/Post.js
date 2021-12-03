@@ -10,7 +10,7 @@ const Post = ({post}) => {
     const postHeading = useRef(null);
     const navigation = useRef(null);
     let figures = [];
-   
+
 
     let currentImageTransform = 0;
     let appliedHidenClassTransition = false;
@@ -27,57 +27,53 @@ const Post = ({post}) => {
       }
 
 const getFigures = ()=>{
-        figures = document.querySelectorAll(".wp-block-image"); 
+        figures = document.querySelectorAll("figure img"); 
     }     
  const scrollEffects= (()=>{
-
       
-if (window.scrollY > 200 && !appliedHidenClassTransition && navigation.current  && !navigation.current.classList.contains("hide-me-now") ){
+if (window.scrollY > 650 && !appliedHidenClassTransition && navigation.current  && !navigation.current.classList.contains("hide-me-now") ){
     navigation.current.classList.add("hide-me-now");
     navigation.current.classList.remove("show-me-now");
     appliedHidenClassTransition = true;
 } 
 
-if (window.scrollY < 200 && appliedHidenClassTransition && navigation.current && navigation.current.classList.contains("hide-me-now") ){
+if (window.scrollY < 650 && appliedHidenClassTransition && navigation.current && navigation.current.classList.contains("hide-me-now") ){
     appliedHidenClassTransition = false;
     navigation.current.classList.remove("hide-me-now");
     navigation.current.classList.add("show-me-now")  
 }
         if (heroImage.current){
 
-            
-
-
-            let opacity = 1- (window.scrollY/100);  
+            // let opacity = 1- (window.scrollY/200);  
            
-            if (opacity <= 1){
-                postHeading.current.style.opacity = opacity;
-            }
+            // if (opacity <= 1){
+            //     postHeading.current.style.opacity = opacity;
+            // }
 
-            if (window.scrollY > 150){
+            if (window.scrollY > 350){
                 heroImage.current.classList.add("hide-me-now");
                 heroImage.current.classList.remove("show-me-now");
             } 
-            if (window.scrollY < 150){
+            if (window.scrollY < 350){
                 heroImage.current.classList.add("show-me-now");
                 heroImage.current.classList.remove("hide-me-now");
             }
 
-            contentContainer.current.style.transform = "translateY(-" + (window.scrollY /40) + "%)";
-            postHeading.current.style.transform = "translateY(-" + (window.scrollY /10) + "%)";
-            heroImage.current.style.transform = "translate(-"+ currentImageTransform + "%, -" + (window.scrollY )/5 + "%)";
+            // contentContainer.current.style.transform = "translateY(-" + (window.scrollY /40) + "%)";
+            postHeading.current.style.transform = "translateY(" + (window.scrollY /2 ) + "%)";         
+            heroImage.current.style.transform = "translate(-"+ currentImageTransform + "%, " + (window.scrollY )/9 + "%)";
 
-        
-
+            if (window.scrollY > 700 && window.scrollY > 800){
+                postHeading.current.style.transform = "translateY(0%)";     
+            }
+  
             [...figures].map((f)=>{
-                    if (window.scrollY  >= (f.offsetTop -50) && window.scrollY  <= (f.offsetTop + 50)){
+
+                    let offset = 80
+                    if (window.scrollY  >= (f.offsetTop - offset) && window.scrollY  <= (f.offsetTop + offset)){
                 
-
-                    f.classList.add("show-me-now") 
+                setTimeout(()=>{ f.classList.add("show-me-now") }, 500)
                 }
-
-       
-              
             })
     
         }
@@ -89,17 +85,13 @@ if (window.scrollY < 200 && appliedHidenClassTransition && navigation.current &&
         reportWindowSize(heroImage);
         scrollEffects();
       }, []);
-  
     
     window.addEventListener('resize', ()=>reportWindowSize(heroImage));
-
     window.addEventListener('scroll', ()=>scrollEffects(heroImageContainer));
-
-
 
         return (
             <>
-            <div style={{backgroundColor: post.acf.background_color}} className="post-container"> 
+            <div style={{backgroundColor: post.acf.backgroundcolor}} className="post-container"> 
                 
                         <div className="post-feature-image2"  ref={heroImageContainer}>
                             <div className="hero-overlay"></div> 
@@ -111,8 +103,8 @@ if (window.scrollY < 200 && appliedHidenClassTransition && navigation.current &&
                         <div className="post-title"> {post.title['rendered']}</div>
                         <div className="post-excerpt" dangerouslySetInnerHTML={{__html: post.excerpt['rendered']}}></div>
                     </div>
-            
-              <div className="post-body" style={{backgroundColor: post.acf.background_color}} ref={contentContainer}>
+            <div className="body-post-stub"></div>
+              <div className="post-body" style={{backgroundColor: post.acf.backgroundcolor}} ref={contentContainer}>
                   
                   <span style={{color: post.acf.bodytextcolor}} dangerouslySetInnerHTML={{__html: post.content['rendered']}}></span> 
                 
