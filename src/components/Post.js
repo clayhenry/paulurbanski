@@ -46,7 +46,7 @@ const getFigures = ()=>{
         paragraphs = [...document.querySelectorAll(".post-body p")]; 
     }     
 
- const scrollEffects= (()=>{
+const scrollEffects= (()=>{
       
             if (window.scrollY > 200 && !appliedHidenClassTransition && navigation.current  && !navigation.current.classList.contains("hide-me-now") ){
                 navigation.current.classList.add("hide-me-now");
@@ -67,46 +67,37 @@ const getFigures = ()=>{
                         //     postHeading.current.style.opacity = opacity;
                         // }
 
-                        if (window.scrollY > 400){
+                        if (window.scrollY > 400 && heroImage.current.classList.contains("show-me-now")){
                             heroImage.current.classList.add("hide-me-now");
                             heroImage.current.classList.remove("show-me-now");
-
-                            // paragraphs[0].classList.remove("hide-me-now-move");
-                            // paragraphs[0].classList.add("show-me-now-move");
-
                         } 
+
                         if (window.scrollY < 400 && heroImage.current.classList.contains("hide-me-now")){
                             heroImage.current.classList.add("show-me-now");
                             heroImage.current.classList.remove("hide-me-now");
-
-                            // paragraphs[0].classList.add("hide-me-now-move");
-                            // paragraphs[0].classList.remove("show-me-now-move");
                         }
 
                         if (paragraphs[0]){
-                        if (window.scrollY > 300){
+                        if (window.scrollY > 300 ){
 
                             paragraphs[0].classList.remove("hide-me-now-move");
                             paragraphs[0].classList.add("show-me-now-move");
                         }
-                        if (window.scrollY < 300 ){
+                        if (window.scrollY < 300 && paragraphs[0].classList.contains("show-me-now-move") ){
+
                             paragraphs[0].classList.add("hide-me-now-move");
                             paragraphs[0].classList.remove("show-me-now-move");
                         }
                     }
-
 
                         // contentContainer.current.style.transform = "translateY(-" + (window.scrollY /40) + "%)";
                         postHeading.current.style.transform = "translateY(" + (window.scrollY /2 ) + "%)";         
                         heroImage.current.style.transform = "translate(-"+ currentImageTransform + "%, " + (window.scrollY )/9 + "%)";
 
                         if (window.scrollY > 700 && window.scrollY > 800){
-                            postHeading.current.style.transform = "translateY(0%)";     
-                        
+                            postHeading.current.style.transform = "translateY(0%)"; 
                         }
-                    
-            
-                
+
                         [...figures].map((f)=>{
 
                                 let offset = 80
@@ -115,11 +106,11 @@ const getFigures = ()=>{
                             setTimeout(()=>{ f.classList.add("show-me-now") }, 500)
                             }
                         })
-                
                     }
                 })
     
 if (currentPost){
+    
     getFigures();
     window.addEventListener('resize', ()=>reportWindowSize(heroImage));
     window.addEventListener('scroll', ()=>scrollEffects(heroImageContainer));
