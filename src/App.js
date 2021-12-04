@@ -23,8 +23,11 @@ const getPosts = ()=>{
   .then((res) => res.json())
   .then(
     (data) => {
-      setData(data)
-      setLoading(false)
+   
+      setData(data);
+    
+      setLoading(false);
+      // getCurrentPost(data);
  
     },
     (error) => {
@@ -34,6 +37,12 @@ const getPosts = ()=>{
   );
 }
 
+// const getCurrentPost =() =>{
+  
+//   setData(prevValue => {
+//     console.log(prevValue);
+//   });
+// }
 
 
 // const doSomething = (id)=>{ 
@@ -48,21 +57,18 @@ if (isLoading) {
   return (
     <div className="App">
 
-      {/* <Image color="blue" onDosomething={doSomething} data={data} /> */}
+     
       <BrowserRouter>
       
-      {/* <Post post={posts[0]} /> */}
-
-      <Routes>
+      
+     <Routes>
         
           <Route  path="/" element={<Home posts={posts} />} />
     
-          <Route path="post" element={<Post post={posts[0]} /> }>
-             <Route path=":postId" element={<Post post={posts[0]} /> } />
+          <Route path="post">
+             <Route path=":postId" element={<Post posts={posts} /> } />
            </Route>
-
         </Routes>
-
   </BrowserRouter>
     </div>
 
