@@ -1,10 +1,8 @@
 import { Navigation } from './Navigation';
-import { Home } from './Home';
 import { Footer } from './Footer';
 import React, { useRef, useEffect, useState } from 'react'
 import {useParams } from "react-router-dom";
-import { Link, Route, BrowserRouter, Routes} from "react-router-dom";
-
+import { Link} from "react-router-dom";
 
 const Post = ({posts}) => {
 
@@ -17,6 +15,7 @@ const Post = ({posts}) => {
     const contentContainer = useRef(null);
     const postHeading = useRef(null);
     const navigation = useRef(null);
+    const transition = useRef(null);
 
     let nextPost = [];
 
@@ -46,7 +45,6 @@ const scrollDocToTop = ()=>{
         document.documentElement.scrollTop = 0;
         console.log(window.scrollY);
     }, 0)
- 
 }
     
 function reportWindowSize(heroImage) {
@@ -125,16 +123,15 @@ const scrollEffects= (()=>{
                         postHeading.current.style.transform = "translateY(" + (window.scrollY /2 ) + "%)";         
                         heroImage.current.style.transform = "translate(-"+ currentImageTransform + "%, " + (window.scrollY )/9 + "%)";
 
-                        if (window.scrollY > 700 && window.scrollY > 800){
+                        if (window.scrollY > 700 && window.scrollY > 900){
                             postHeading.current.style.transform = "translateY(0%)"; 
                         }
 
                         [...figures].map((f)=>{
-
                                 let offset = 80
                                 if (window.scrollY  >= (f.offsetTop - offset) && window.scrollY  <= (f.offsetTop + offset)){
                             
-                            setTimeout(()=>{ f.classList.add("show-me-now") }, 500)
+                            setTimeout(()=>{ f.classList.add("show-me-now-move") }, 400)
                             }
                         })
                     }
@@ -149,13 +146,12 @@ if (currentPost){
     getFigures();
     getNextPost();
 
-   
-
     window.addEventListener('resize', ()=>reportWindowSize(heroImage));
     window.addEventListener('scroll', ()=>scrollEffects(heroImageContainer));
 
         return (
             <>
+            <div className="transition" ref={transition} style={{backgroundColor: currentPost.acf.backgroundcolor}} ></div>
             <div style={{backgroundColor: currentPost.acf.backgroundcolor}} className="post-container"> 
                 
                         <div className="post-feature-image2"  ref={heroImageContainer}>
@@ -175,7 +171,7 @@ if (currentPost){
                   
                     <div className="next-link">
                         <div className="divider" style={divider} ></div>
-                            <Link to={"/post/" + nextPost.title['rendered']} style={{color: currentPost.acf.navigationtextcolor}}> Thank you for visiting, view next post.</Link>
+                            <Link to={"/post/" + nextPost.title['rendered']} style={{color: currentPost.acf.navigationtextcolor}}> Thanks for viewing, see next post.</Link>
                         <div className="divider" style={divider} ></div>
                     </div>
                      <Footer />
@@ -188,8 +184,4 @@ if (currentPost){
     }
     return ([])
 }
-
-
-   
-
 export default Post

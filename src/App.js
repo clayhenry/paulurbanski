@@ -1,6 +1,4 @@
-import ScrollToTop from "./components/ScrollToTop";
 import {useState, useEffect} from 'react'
-import axios from 'axios'
 import './App.css';
 import './External.css'
 import Post from './components/Post';

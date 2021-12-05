@@ -3,10 +3,12 @@ html {
 }
 
 
+
 body {
+  /* overflow-x: hidden; */
+  overflow-y: scroll;
   margin: 0;
   padding: 0;
-
 }
 
 
@@ -83,6 +85,7 @@ opacity: 0.7;
 .post-body {
   padding: 30px 0;
   position: absolute;
+  width: 100%;
 
 }
 /* 
@@ -122,13 +125,15 @@ figure ul {
 .post-body p {
   padding: 0 150px;
   padding-left: 200px;
-  font-size: 1.3em;
+  font-size: 1.2em;
   line-height: 1.8rem;
   width: 50%;
 }
 
 .post-body p:first-child {
   opacity: 0;
+  transform: translateY(-15%);
+
 }
 
 .post-body img {
@@ -224,6 +229,49 @@ figure ul {
   animation-fill-mode: forwards;
 }
 
+.transition {
+  animation: load-transition;
+  animation-duration: 1.3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0, 1, 0.77, 0.99);
+  position: absolute;
+  bottom: 0;
+  z-index: 99999999;
+  width: 100%;
+}
+
+
+@media only screen and (max-width: 600px) {
+
+
+  .top-navigation {
+    font-size: 0.8em;
+
+  }
+  .post-heading .post-title{
+    padding: 0 5%;
+  }
+  .post-heading .post-excerpt{
+    padding: 0 5%;
+  }
+
+  .post-title {
+    font-size: 2em !important;
+  }
+  /* .post-feature-image2 {
+      display: none;
+  } */
+
+  .post-body p {
+    padding: 10px;
+    padding-left: 0;
+    width: 80%;
+    margin: 20px;
+    font-size: 1.2em;
+ }
+}
+
+
 
 @keyframes hide-me-now {
   from {
@@ -242,9 +290,20 @@ figure ul {
   }
 }
 
+
+@keyframes load-transition {
+  from {
+    height: 100vh;
+  }
+  to {
+    height: 0;
+  }
+}
+
+
 @keyframes hide-me-now-move {
   from {
-    opacity: 1; transform: translateY(0%);
+    opacity: 1; transform: translateY(10%);
   }
   to {
     opacity: 0; transform: translateY(15%);
@@ -255,7 +314,7 @@ figure ul {
     opacity: 0; transform: translateY(15%);
   }
   to {
-    opacity: 1; transform: translateY(0%);
+    opacity: 1; transform: translateY(10%);
   }
 }
 

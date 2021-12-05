@@ -36,6 +36,19 @@
 	width: calc((100% - var(--global--spacing-unit)) / 2);
 }
 
+@media only screen and (max-width: 600px) {
+	.wp-block-gallery .blocks-gallery-image,
+	.wp-block-gallery .blocks-gallery-item {
+	width: 100%;
+}
+.wp-block-gallery {
+
+	width: 100%;
+}
+
+}
+
+
 .wp-block-gallery .blocks-gallery-image figcaption,
 .wp-block-gallery .blocks-gallery-item figcaption {
 	margin: 0;
