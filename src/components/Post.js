@@ -1,12 +1,16 @@
 import { Navigation } from './Navigation';
+import { Home } from './Home';
+import { Footer } from './Footer';
 import React, { useRef, useEffect, useState } from 'react'
 import {useParams } from "react-router-dom";
+import { Link, Route, BrowserRouter, Routes} from "react-router-dom";
 
 
 const Post = ({posts}) => {
 
     const { postId } = useParams();
     const [currentPost, setCurrentPost] = useState();
+
     
     const heroImage = useRef(null);
     const heroImageContainer = useRef(null);
@@ -14,36 +18,63 @@ const Post = ({posts}) => {
     const postHeading = useRef(null);
     const navigation = useRef(null);
 
+    let nextPost = [];
+
     useEffect(() => {
         reportWindowSize(heroImage);
         scrollEffects();
       }, []);
 
-      useEffect(() => {
+    useEffect(() => {
+        scrollDocToTop();
           if (posts.length > 0){
             setCurrentPost(posts.filter((p)=> p.title['rendered'] == postId)[0]);
           }
-      },[currentPost])
+      },[postId]);
+
+      
 
     let figures = [];
     let paragraphs = [];
     let currentImageTransform = 0;
     let appliedHidenClassTransition = false;
 
+const scrollDocToTop = ()=>{
+    setTimeout(()=>{
+        window.scrollTop = 0;
+        window.scrollTo(0,0); 
+        document.documentElement.scrollTop = 0;
+        console.log(window.scrollY);
+    }, 0)
+ 
+}
     
 function reportWindowSize(heroImage) {
         
         if (heroImage.current){
-    
             let margin = (heroImage.current.width - window.innerWidth);
             currentImageTransform = (margin/100)*3
             heroImage.current.style.transform = "translate( -" + (margin/100)*3 + "%, 0)";
         }
       }
+const getNextPost =()=>{
+        let index = posts.findIndex((i) => i.id == currentPost.id );
+    
+        if (posts[index + 1]){
+            nextPost = posts[index + 1]
+        } else {
+            nextPost = posts[0]
+        }
+}
 
 const getFigures = ()=>{
-        figures = document.querySelectorAll("figure img"); 
-        paragraphs = [...document.querySelectorAll(".post-body p")]; 
+
+    if (currentPost){
+           setTimeout(() => {
+            figures = document.querySelectorAll("figure img"); 
+            paragraphs = [...document.querySelectorAll(".post-body p")]; 
+           }); 
+     }
     }     
 
 const scrollEffects= (()=>{
@@ -110,8 +141,16 @@ const scrollEffects= (()=>{
                 })
     
 if (currentPost){
-    
+   
+    const divider = {
+        borderTop: "1px solid" + currentPost.acf.bodytextcolor
+    }
+
     getFigures();
+    getNextPost();
+
+   
+
     window.addEventListener('resize', ()=>reportWindowSize(heroImage));
     window.addEventListener('scroll', ()=>scrollEffects(heroImageContainer));
 
@@ -130,10 +169,20 @@ if (currentPost){
                         <div className="post-excerpt" dangerouslySetInnerHTML={{__html: currentPost.excerpt['rendered']}}></div>
                     </div>
             <div className="body-post-stub"></div>
-              <div className="post-body" style={{backgroundColor: currentPost.acf.backgroundcolor}} ref={contentContainer}>
-                  <span style={{color: currentPost.acf.bodytextcolor}} dangerouslySetInnerHTML={{__html: currentPost.content['rendered']}}></span> 
+              <div className="post-body" style={{backgroundColor: currentPost.acf.backgroundcolor,color: currentPost.acf.bodytextcolor} } ref={contentContainer}>
+                  <span dangerouslySetInnerHTML={{__html: currentPost.content['rendered']}}></span> 
+                  <div className="next-project" > 
+                  
+                    <div className="next-link">
+                        <div className="divider" style={divider} ></div>
+                            <Link to={"/post/" + nextPost.title['rendered']} style={{color: currentPost.acf.navigationtextcolor}}> Thank you for visiting, view next post.</Link>
+                        <div className="divider" style={divider} ></div>
+                    </div>
+                     <Footer />
+                    </div>
             </div>
             </div>
+            
             </>
         )
     }

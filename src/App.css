@@ -38,6 +38,23 @@ opacity: 0.7;
 }
 
 
+.footer-navigation {
+  display: flex;
+  font-family: 'Kanit', sans-serif;
+  font-size: 1rem;
+  margin: 40px 0;
+  justify-content: center;
+}
+
+.footer-navigation div {
+  /* border: 1px solid green; */
+  margin: 10px 20px;
+  text-align: center;
+  font-size: 1.4em;
+  opacity: 0.7;
+  }
+
+
 
 .post-container { 
   height: 100vh;
@@ -115,7 +132,7 @@ figure ul {
 }
 
 .post-body img {
-    /* width: 100%; */
+    width: 100%;
     height: auto;
     max-width: 1024px
 }
@@ -161,27 +178,27 @@ figure ul {
   margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.divider {
+  opacity: 0.2;
+
+  margin: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.next-project {
+  width: 100%;
+  text-align: center;
+  padding: 70px 0;
+  font-size: 1.8em;
+    align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-family: 'Prata', serif;
+
 }
 
-.App-link {
-  color: #61dafb;
+.next-link a {
+  font-size: 0.9em;
+  text-decoration: none;
 }
-
 
 .hide-me-now{
   animation: hide-me-now;

@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import ScrollToTop from "./components/ScrollToTop";
 import {useState, useEffect} from 'react'
 import axios from 'axios'
 import './App.css';
@@ -13,6 +13,7 @@ let postUrl = "http://paulurbanski.local/wp-json/wp/v2/posts?_embed";
 
 const [posts, setData] = useState([]);
 const [isLoading, setLoading] = useState(true);
+
 
 useEffect(() => {
   getPosts();
@@ -57,17 +58,11 @@ if (isLoading) {
   return (
     <div className="App">
 
-     
-      <BrowserRouter>
-      
-      
+      <BrowserRouter >
      <Routes>
-        
           <Route  path="/" element={<Home posts={posts} />} />
-    
-          <Route path="post">
-             <Route path=":postId" element={<Post posts={posts} /> } />
-           </Route>
+            <Route path="/post/:postId" element={<Post posts={posts} /> } />
+        
         </Routes>
   </BrowserRouter>
     </div>
