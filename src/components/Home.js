@@ -12,7 +12,7 @@ const Home = ({posts}) => {
 {posts.map((post)=>
 
   <li key={post.id}>
-      <Link to={"/post/" + post.title['rendered']} key={post.title['rendered']}>{post.title['rendered']}</Link>
+      <Link to={"/post/" + post.slug} key={post.title['rendered']}>{post.title['rendered']}</Link>
   </li>
   // <li  >{post.title['rendered']}</li>
 )

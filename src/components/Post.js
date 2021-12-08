@@ -3,12 +3,12 @@ import { Footer } from './Footer';
 import React, { useRef, useEffect, useState } from 'react'
 import {useParams } from "react-router-dom";
 import { Link} from "react-router-dom";
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const Post = ({posts}) => {
 
     const { postId } = useParams();
     const [currentPost, setCurrentPost] = useState();
-
     
     const heroImage = useRef(null);
     const heroImageContainer = useRef(null);
@@ -27,11 +27,9 @@ const Post = ({posts}) => {
     useEffect(() => {
         scrollDocToTop();
           if (posts.length > 0){
-            setCurrentPost(posts.filter((p)=> p.title['rendered'] == postId)[0]);
+            setCurrentPost(posts.filter((p)=> p.slug == postId)[0]);
           }
       },[postId]);
-
-      
 
     let figures = [];
     let paragraphs = [];
@@ -43,7 +41,6 @@ const scrollDocToTop = ()=>{
         window.scrollTop = 0;
         window.scrollTo(0,0); 
         document.documentElement.scrollTop = 0;
-        console.log(window.scrollY);
     }, 0)
 }
     
@@ -131,7 +128,7 @@ const scrollEffects= (()=>{
                                 let offset = 80
                                 if (window.scrollY  >= (f.offsetTop - offset) && window.scrollY  <= (f.offsetTop + offset)){
                             
-                            setTimeout(()=>{ f.classList.add("show-me-now-move") }, 400)
+                            setTimeout(()=>{ f.classList.add("show-me-now-move") }, 300)
                             }
                         })
                     }
@@ -143,6 +140,8 @@ if (currentPost){
         borderTop: "1px solid" + currentPost.acf.bodytextcolor
     }
 
+    const box = { borderBottom: "1px solid" + currentPost.acf.bodytextcolor}
+
     getFigures();
     getNextPost();
 
@@ -151,34 +150,47 @@ if (currentPost){
 
         return (
             <>
+            <HelmetProvider >
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>{currentPost.title['rendered']} by Paul Urbanski </title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
+
             <div className="transition" ref={transition} style={{backgroundColor: currentPost.acf.backgroundcolor}} ></div>
             <div style={{backgroundColor: currentPost.acf.backgroundcolor}} className="post-container"> 
                 
                         <div className="post-feature-image2"  ref={heroImageContainer}>
                             <div className="hero-overlay"></div> 
-                            <img className="hero-image" src={currentPost._embedded["wp:featuredmedia"][0].media_details.sizes['1536x1536'].source_url} ref={heroImage}  />
+                            <img className="hero-image hero-transition" src={currentPost._embedded["wp:featuredmedia"][0].media_details.sizes['1536x1536'].source_url} ref={heroImage}  />
                             </div>
                         <div ref={navigation} style={{color: currentPost.acf.navigationtextcolor}}> <Navigation /> </div>
                         
-                    <div className="post-heading" style={{color: currentPost.acf.exerpttextcolor}} ref={postHeading} >
+                    <div className="post-heading heading-transition" style={{color: currentPost.acf.exerpttextcolor}} ref={postHeading} >
                         <div className="post-title"> {currentPost.title['rendered']}</div>
                         <div className="post-excerpt" dangerouslySetInnerHTML={{__html: currentPost.excerpt['rendered']}}></div>
+                        <div className="post-category">
+                        <div style={box} className="divider-category"></div>    
+                            From {currentPost.acf.category}
+                            <div style={box} className="divider-category"></div>    
+                        </div>
+
                     </div>
-            <div className="body-post-stub"></div>
+        
               <div className="post-body" style={{backgroundColor: currentPost.acf.backgroundcolor,color: currentPost.acf.bodytextcolor} } ref={contentContainer}>
                   <span dangerouslySetInnerHTML={{__html: currentPost.content['rendered']}}></span> 
                   <div className="next-project" > 
                   
                     <div className="next-link">
                         <div className="divider" style={divider} ></div>
-                            <Link to={"/post/" + nextPost.title['rendered']} style={{color: currentPost.acf.navigationtextcolor}}> Thanks for viewing, see next post.</Link>
+                            <Link to={"/post/" + nextPost.slug} style={{color: currentPost.acf.navigationtextcolor}}> Thanks for viewing, see next post. &rarr;</Link>
                         <div className="divider" style={divider} ></div>
                     </div>
                      <Footer />
                     </div>
             </div>
             </div>
-            
+            </HelmetProvider>
             </>
         )
     }
