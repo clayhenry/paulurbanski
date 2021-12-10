@@ -281,7 +281,8 @@ figure ul {
 
 .feed-posts {
   width: 100%;
-  margin-top: 35%;
+  margin-top: 400px;
+  background-color: white;
 }
 
 .feed-posts img{
@@ -298,6 +299,7 @@ figure ul {
   border: 1px solid rgb(209, 209, 209);
   margin: 0 auto;
   width: 700px;
+  background-color: white;
   padding: 50px 50px 40px 50px;
   margin-top: 10px;
 }
@@ -342,6 +344,11 @@ figure ul {
   color: rgb(65, 65, 65);
   text-transform: uppercase;
   padding: 5px 0;
+}
+
+.navigation-container {
+  position: absolute;
+  z-index: 9999999;
 }
 
 @media only screen and (max-width: 600px) {
