@@ -17,10 +17,15 @@ const Post = ({posts}) => {
     const navigation = useRef(null);
     const transition = useRef(null);
 
+
+    const onRef = (node) => { if (node) heroImage.current = node; reportWindowSize();}
+    
+
     let nextPost = [];
 
+
     useEffect(() => {
-        reportWindowSize(heroImage);
+        reportWindowSize();
         scrollEffects();
       }, []);
 
@@ -33,7 +38,7 @@ const Post = ({posts}) => {
 
     let figures = [];
     let paragraphs = [];
-    let currentImageTransform = 0;
+    let currentImageTransform = 0
     let appliedHidenClassTransition = false;
 
 const scrollDocToTop = ()=>{
@@ -44,13 +49,15 @@ const scrollDocToTop = ()=>{
     }, 0)
 }
     
-function reportWindowSize(heroImage) {
-        
+const reportWindowSize = () => {
+   console.log(heroImage);
         if (heroImage.current){
+                console.log("image");
             let margin = (heroImage.current.width - window.innerWidth);
             currentImageTransform = (margin/100)*3
             heroImage.current.style.transform = "translate( -" + (margin/100)*3 + "%, 0)";
         }
+
       }
 const getNextPost =()=>{
         let index = posts.findIndex((i) => i.id == currentPost.id );
@@ -117,10 +124,14 @@ const scrollEffects= (()=>{
                     }
 
                         // contentContainer.current.style.transform = "translateY(-" + (window.scrollY /40) + "%)";
-                        postHeading.current.style.transform = "translateY(" + (window.scrollY /2 ) + "%)";         
+
+                    if (postHeading.current){
+                        postHeading.current.style.transform = "translateY(" + (window.scrollY /2 ) + "%)";     
+                    }
+                         
                         heroImage.current.style.transform = "translate(-"+ currentImageTransform + "%, " + (window.scrollY )/9 + "%)";
 
-                        if (window.scrollY > 700 && window.scrollY > 900){
+                        if (window.scrollY > 700 && window.scrollY > 900 && postHeading.current){
                             postHeading.current.style.transform = "translateY(0%)"; 
                         }
 
@@ -133,9 +144,17 @@ const scrollEffects= (()=>{
                         })
                     }
                 })
+
+
+const setReady = ()=>{
+    reportWindowSize();
+
+}
     
 if (currentPost){
    
+
+
     const divider = {
         borderTop: "1px solid" + currentPost.acf.bodytextcolor
     }
@@ -143,7 +162,11 @@ if (currentPost){
     const box = { borderBottom: "1px solid" + currentPost.acf.bodytextcolor}
 
     getFigures();
-    getNextPost();
+    getNextPost();  
+ 
+      
+ 
+    
 
     window.addEventListener('resize', ()=>reportWindowSize(heroImage));
     window.addEventListener('scroll', ()=>scrollEffects(heroImageContainer));
@@ -162,7 +185,9 @@ if (currentPost){
                 
                         <div className="post-feature-image2"  ref={heroImageContainer}>
                             <div className="hero-overlay"></div> 
-                            <img className="hero-image hero-transition" src={currentPost._embedded["wp:featuredmedia"][0].media_details.sizes['1536x1536'].source_url} ref={heroImage}  />
+                            <img className="hero-image hero-transition" 
+                            src={currentPost._embedded["wp:featuredmedia"][0].media_details.sizes['1536x1536'].source_url} 
+                            ref={onRef}  />
                             </div>
                         <div ref={navigation} style={{color: currentPost.acf.navigationtextcolor}}> <Navigation /> </div>
                         
