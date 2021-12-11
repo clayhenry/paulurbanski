@@ -85,8 +85,8 @@ const Books = ({books}) => {
                                     books.map((book) =>
                                         <div key={book.id} className="feed-post-item book-post-item">
                                             <div className={'books-item clickable'} onClick={()=>goTo(book.slug)} >
-                                                <div className={'book-image'} style={{backgroundImage: 'url(' + book._embedded["wp:featuredmedia"][0].media_details.sizes['medium'].source_url + ')' }}>
-                                                    {/*<img src={book._embedded["wp:featuredmedia"][0].media_details.sizes['medium'].source_url} />*/}
+                                                <div className={'book-item-contents'}>
+                                                    <img src={book._embedded["wp:featuredmedia"][0].media_details.sizes['medium'].source_url} />
                                                     <div className={'books-item-title'} > {book.title['rendered']}</div>
                                                 </div>
 

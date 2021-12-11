@@ -358,6 +358,7 @@ figure ul {
   display: flex;
   background-color: transparent;
   flex-wrap: wrap;
+  text-align: center;
 }
 
 .feed-posts img{
@@ -441,14 +442,31 @@ figure ul {
   position: absolute;
   bottom: 0;
   padding: 30px;
-  font-size: 1.6em;
+  font-size: 4em;
   font-family: 'Prata', serif;
+  opacity: 0;
+  transition: all 0.5s;
 }
+
 
 .book-image {
   width: 100%;
-  height: 350px;
+  height: 320px;
   background-repeat: no-repeat;
+}
+
+.book-item-contents {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  align-content: space-around;
+  color: white;
+}
+
+.book-item-contents:hover > .books-item-title {
+  opacity: 1;
 }
 
 
