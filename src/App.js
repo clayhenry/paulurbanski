@@ -6,15 +6,19 @@ import Home from './components/Home';
 import Feed from './components/Feed';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter, Routes, Route} from "react-router-dom";
+import Books from "./components/Books";
+import Book from "./components/Book";
 
 
 function App() {
 
 let postUrl = "http://paulurbanski.local/wp-json/wp/v2/posts?_embed";
 let feedUrl = "http://paulurbanski.local/wp-json/wp/v2/feed?per_page=10";
+let booksUrl = "http://paulurbanski.local/wp-json/wp/v2/books?_embed"
 
 const [posts, setData] = useState([]);
 const [feeds, setFeed] = useState([]);
+const [books, setBooks] = useState([]);
 const [isLoading, setLoading] = useState(true);
 
 
@@ -36,7 +40,8 @@ const getPosts = ()=>{
     }
   );
 
-  fetch(feedUrl).then((res)=>res.json()).then((data)=>setFeed(data))
+    fetch(feedUrl).then((res)=>res.json()).then((data)=>setFeed(data))
+    fetch(booksUrl).then((res)=>res.json()).then((data)=>setBooks(data))
 }
 
 // const getCurrentPost =() =>{
@@ -54,15 +59,11 @@ const getPosts = ()=>{
 if (isLoading) {
   return (
     <>
-
-
             <h1>Loading data... </h1>
     </>
   )
  
 } else {
-
-
   return (
     <HelmetProvider >
     <div className="App">
@@ -78,8 +79,9 @@ if (isLoading) {
      <Routes>
           <Route  path="/" element={<Home posts={posts} />} />
           <Route path="/post/:postId" element={<Post posts={posts} /> } />
+         <Route path="/books" element={<Books books={books} /> } />
           <Route path="/feed" element={<Feed feeds={feeds} /> } />
-        
+         <Route path="/book/:bookId" element={<Book /> } />
         </Routes>
   </BrowserRouter>
     </div>
