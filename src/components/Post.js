@@ -50,7 +50,7 @@ const scrollDocToTop = ()=>{
 }
     
 const reportWindowSize = () => {
-   console.log(heroImage);
+
         if (heroImage.current){
                 console.log("image");
             let margin = (heroImage.current.width - window.innerWidth);

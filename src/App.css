@@ -66,7 +66,6 @@ opacity: 0.7;
   height: 100vh;
   font-family: 'Roboto', sans-serif;
  
-  /* margin-top: -95px; */
 }
 /* .post-feature-image{
   background-size: cover;
@@ -138,13 +137,25 @@ figure ul {
 .post-body p:first-child {
   opacity: 0;
   transform: translateY(-15%);
-
 }
 
 .post-body img {
     width: 100%;
     height: auto;
     max-width: 1024px
+}
+
+.feed-body p {
+  padding: 0 150px;
+  padding-left: 200px;
+  font-size: 1.2em;
+  line-height: 1.8rem;
+  width: 50%;
+}
+.feed-body img {
+  width: 100%;
+  height: auto;
+  max-width: 1024px
 }
 
 .hero-image {
@@ -174,6 +185,16 @@ figure ul {
   transition-timing-function: ease; */
 }
 
+.feed-heading {
+  position: absolute;
+  width: 100%;
+  top: 30%;
+  text-align: center;
+  font-family: 'Prata', serif;
+  /* transition: all 0.5s;
+  transition-timing-function: ease; */
+}
+
 .post-heading .post-title {
   font-size: 3em;
   padding: 0 20%;
@@ -184,6 +205,20 @@ figure ul {
   padding: 0 20%;
 }
 .post-heading .post-excerpt p{
+  padding: 0 !important;
+  margin: 0;
+}
+
+.feed-heading .post-title {
+  font-size: 3em;
+  padding: 0 20%;
+
+}
+.feed-heading .post-excerpt {
+  font-size: 1.2em;
+  padding: 0 20%;
+}
+.feed-heading .post-excerpt p{
   padding: 0 !important;
   margin: 0;
 }
@@ -276,9 +311,6 @@ figure ul {
   width: 100%;
 }
 
-.feed-heading {
-  top: 25%
-}
 
 .feed-posts {
   width: 100%;
@@ -303,6 +335,8 @@ figure ul {
   background-color: white;
   padding: 50px 50px 40px 50px;
   margin-top: 10px;
+  background-color: white;
+  position: relative;
 }
 
 .feed-posts p{
@@ -369,6 +403,19 @@ figure ul {
     margin-top: -30%;
   }
 
+  .feed-heading {
+    margin-top:-5%;
+    font-size: 0.9em;
+  }
+
+
+  .feed-heading .post-title{
+    padding: 0 5%;
+  }
+  .feed-heading .post-excerpt{
+    padding: 0 5%;
+  }
+
   .post-title {
     font-size: 2em !important;
   }
@@ -384,18 +431,26 @@ figure ul {
     font-size: 1.2em;
  }
 
+ .feed-body p {
+  padding: 10px;
+  padding-left: 0;
+  width: 80%;
+  margin: 20px;
+  font-size: 1.2em;
+}
+
 
   .feed-posts img{
     opacity: 1;
   }
 
   .feed-posts {
-    margin-top: 60%;
+    margin-top: 90%;
   }
 
   .feed-heading {
-    top: 230px;
-    font-size: 0.7em;
+    /* top: 230px;
+    font-size: 0.7em; */
   }
 
   .feed-post-item {

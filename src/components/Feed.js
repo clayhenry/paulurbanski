@@ -7,7 +7,7 @@ const Feed = ({feeds}) => {
 
     const transition = useRef(null);
     const navigation = useRef(null);
-    const postHeading = useRef(null);
+    const feedHeading = useRef(null);
 
     let appliedHidenClassTransition = false;
 
@@ -32,19 +32,27 @@ const Feed = ({feeds}) => {
         }
 
 
-        if (postHeading.current){
-            postHeading.current.style.transform = "translateY(" + (window.scrollY /2 ) + "%)";  
+        if (feedHeading.current && feedHeading.current.style){
+
+              let opacity = 1- (window.scrollY/200);  
+                    
+                        if (opacity <= 1){
+                            feedHeading.current.style.opacity = opacity;
+                        }
+
+
+            feedHeading.current.style.transform = "translateY(" + (window.scrollY *1.2) + "%)";  
             if (window.scrollY > 700 && window.scrollY > 900){
-                postHeading.current.style.transform = "translateY(0%)"; 
+                feedHeading.current.style.transform = "translateY(-10%)"; 
             }
-            if (window.scrollY > 700){
-                postHeading.current.classList.add("hide-me-now");
-                postHeading.current.classList.remove("show-me-now");
+            if (window.scrollY > 400){
+                feedHeading.current.classList.add("hide-me-now");
+                feedHeading.current.classList.remove("show-me-now");
             } 
 
-            if (window.scrollY < 700 ){
-                postHeading.current.classList.remove("hide-me-now");
-                postHeading.current.classList.add("show-me-now")  
+            if (window.scrollY < 400 ){
+                feedHeading.current.classList.remove("hide-me-now");
+                feedHeading.current.classList.add("show-me-now")  
             }
         }
         
@@ -65,14 +73,14 @@ if (feeds){
             </Helmet>
             <div className="transition" ref={transition} style={{backgroundColor: '#f0f0f0'}} ></div>
         <div className="post-container"> 
-        <div className="post-heading feed-heading heading-transition" ref={postHeading}>
+        <div className="feed-heading heading-transition" ref={feedHeading}>
                   <div className="post-title" >Feed</div>
                   <div  className="post-excerpt">
-                  If you must stick to the latest react-router-dom v6.0.0, then replace useHistory with useNavigate. Else, downgrade your react-router-dom to v5.2.0 and your code works as it should.
+                  If you must stick to the latest react-router-dom v6.0.0, then replace useHistory with useNavigate.
                   </div>
               </div>
           <div ref={navigation} className='navigation-container'> <Navigation /> </div>
-          <div className="post-body" >
+          <div className="feed-body" >
           <div className="feed-posts" >
           
                 {
