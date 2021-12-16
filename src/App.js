@@ -80,8 +80,9 @@ if (isLoading) {
           <Route  path="/" element={<Home posts={posts} />} />
           <Route path="/post/:postId" element={<Post posts={posts} /> } />
          <Route path="/books" element={<Books books={books} /> } />
-          <Route path="/feed" element={<Feed feeds={feeds} /> } />
-         <Route path="/book/:bookId" element={<Book /> } />
+         <Route path="/book/:bookId" element={<Book book={books} /> } />
+          <Route path="/dispatch" element={<Feed feeds={feeds} /> } />
+
         </Routes>
   </BrowserRouter>
     </div>

@@ -44,13 +44,14 @@ const Books = ({books}) => {
                 feedHeading.current.style.transform = "translateY(-10%)";
             }
             if (window.scrollY > 400) {
-                feedHeading.current.classList.add("hide-me-now");
-                feedHeading.current.classList.remove("show-me-now");
+                feedHeading.current.style.marginTop = "-500px";
+                // feedHeading.current.classList.remove("show-me-now");
             }
 
             if (window.scrollY < 400) {
-                feedHeading.current.classList.remove("hide-me-now");
-                feedHeading.current.classList.add("show-me-now")
+                feedHeading.current.style.marginTop = "0";
+                // feedHeading.current.classList.remove("hide-me-now");
+                // feedHeading.current.classList.add("show-me-now")
             }
         }
 
@@ -66,7 +67,7 @@ const Books = ({books}) => {
                     <Helmet>
                         <meta charSet="utf-8"/>
                         <title>Photography Books by Paul Urbanski from Western Canada</title>
-                        <link rel="canonical" href="http://mysite.com/example"/>
+                        <link rel="canonical" href="https://paulurbanski.com/books"/>
                     </Helmet>
                     <div className="transition" ref={transition} style={{backgroundColor: '#f0f0f0'}}></div>
                     <div className="post-container book-container">
@@ -85,7 +86,7 @@ const Books = ({books}) => {
                                     books.map((book) =>
                                         <div key={book.id} className="feed-post-item book-post-item">
                                             <div className={'books-item clickable'} onClick={()=>goTo(book.slug)} >
-                                                <div className={'book-item-contents'}>
+                                                <div className='book-item-contents'>
                                                     <img src={book._embedded["wp:featuredmedia"][0].media_details.sizes['medium'].source_url} />
                                                     <div className={'books-item-title'} > {book.title['rendered']}</div>
                                                 </div>

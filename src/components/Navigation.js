@@ -12,7 +12,7 @@ const goTo = (destination) => navigate(destination);
             <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
          
             <div className="page-title clickable" onClick={()=>goTo('/')}>PAUL URBANSKI</div>
-            <div className="clickable" onClick={()=>goTo('/feed')} >Feed</div>
+            <div className="clickable" onClick={()=>goTo('/dispatch')} >Dispatch</div>
             <div className="clickable" onClick={()=>goTo('/books')}>Books</div>
         </div>
     )

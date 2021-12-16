@@ -152,8 +152,6 @@ const setReady = ()=>{
 }
     
 if (currentPost){
-   
-
 
     const divider = {
         borderTop: "1px solid" + currentPost.acf.bodytextcolor
@@ -163,10 +161,6 @@ if (currentPost){
 
     getFigures();
     getNextPost();  
- 
-      
- 
-    
 
     window.addEventListener('resize', ()=>reportWindowSize(heroImage));
     window.addEventListener('scroll', ()=>scrollEffects(heroImageContainer));

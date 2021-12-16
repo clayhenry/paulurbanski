@@ -252,7 +252,7 @@ figure ul {
 }
 .feed-heading .post-excerpt {
   font-size: 1.2em;
-  padding: 0 20%;
+  padding: 10px 20%;
 }
 .feed-heading .post-excerpt p{
   padding: 0 !important;
@@ -445,6 +445,7 @@ figure ul {
   font-size: 4em;
   font-family: 'Prata', serif;
   opacity: 0;
+  color: white;
   transition: all 0.5s;
 }
 
@@ -465,8 +466,22 @@ figure ul {
   color: white;
 }
 
-.book-item-contents:hover > .books-item-title {
+.book-item-contents:hover .books-item-title {
   opacity: 1;
+}
+
+.book-body img {
+  opacity: 1;
+}
+.book-element {
+  /*margin-top: -300px;*/
+}
+.book-item-element {
+  height: 45vh;
+}
+
+.book-container {
+  /*height: 45vh;*/
 }
 
 
