@@ -8,6 +8,7 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter, Routes, Route} from "react-router-dom";
 import Books from "./components/Books";
 import Book from "./components/Book";
+import About from "./components/About";
 
 
 function App() {
@@ -82,6 +83,7 @@ if (isLoading) {
          <Route path="/books" element={<Books books={books} /> } />
          <Route path="/book/:bookId" element={<Book book={books} /> } />
           <Route path="/dispatch" element={<Feed feeds={feeds} /> } />
+         <Route path="/about" element={<About /> } />
 
         </Routes>
   </BrowserRouter>

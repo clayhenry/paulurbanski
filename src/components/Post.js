@@ -146,10 +146,6 @@ const scrollEffects= (()=>{
                 })
 
 
-const setReady = ()=>{
-    reportWindowSize();
-
-}
     
 if (currentPost){
 
@@ -202,7 +198,7 @@ if (currentPost){
                   
                     <div className="next-link">
                         <div className="divider" style={divider} ></div>
-                            <Link to={"/post/" + nextPost.slug} style={{color: currentPost.acf.navigationtextcolor}}> Thanks for viewing, see next post. &rarr;</Link>
+                            <Link to={"/post/" + nextPost.slug} style={{color: currentPost.acf.navigationtextcolor}}> Thanks for viewing, see next post &rarr;</Link>
                         <div className="divider" style={divider} ></div>
                     </div>
                      <Footer />

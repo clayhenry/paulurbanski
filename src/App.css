@@ -485,6 +485,58 @@ figure ul {
 }
 
 
+.home-post-list {
+  width: 100%;
+  /*background-color: white;*/
+  padding: 50px 50px 40px 50px;
+  margin-top: 350px;
+  background-color: white;
+  position: relative;
+}
+.home-post-list ul {
+  margin: 0 auto;
+  width: 700px;
+  list-style-type: none;
+
+}
+
+.home-post-list ul li {
+  margin: 0 auto;
+  width: 700px;
+
+  display: flex;
+  padding: 10px 0;
+  align-content: flex-start;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: stretch;
+  position: relative;
+
+}
+.home-post-title a {
+  font-size: 2em;
+  font-family: 'Prata', serif;
+  transition: all 0.5s;
+  text-decoration: none;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+
+
+}
+
+.home-post-list ul li img {
+  float: right;
+}
+.home-category {
+  position: absolute;
+  top: 130px;
+}
+
+
+
 @media only screen and (max-width: 600px) {
 
 
