@@ -25,7 +25,7 @@ const Post = ({posts}) => {
 
 
     useEffect(() => {
-        reportWindowSize();
+        // reportWindowSize();
         scrollEffects();
       }, []);
 
@@ -94,16 +94,16 @@ const scrollEffects= (()=>{
             }
                     if (heroImage.current){
 
-                        // let opacity = 1- (window.scrollY/200);  
-                    
-                        // if (opacity <= 1){
-                        //     postHeading.current.style.opacity = opacity;
-                        // }
+                        let opacity = 1- (window.scrollY/200);
+
+                        if (opacity <= 1 && postHeading.current){
+                            postHeading.current.style.opacity = opacity;
+                        }
 
                         if (window.scrollY > 400 && heroImage.current.classList.contains("show-me-now")){
                             heroImage.current.classList.add("hide-me-now");
                             heroImage.current.classList.remove("show-me-now");
-                        } 
+                        }
 
                         if (window.scrollY < 400 && heroImage.current.classList.contains("hide-me-now")){
                             heroImage.current.classList.add("show-me-now");
@@ -126,10 +126,10 @@ const scrollEffects= (()=>{
                         // contentContainer.current.style.transform = "translateY(-" + (window.scrollY /40) + "%)";
 
                     if (postHeading.current){
-                        postHeading.current.style.transform = "translateY(" + (window.scrollY /2 ) + "%)";     
+                        postHeading.current.style.transform = "translateY(" + (window.scrollY /2 ) + "%)";
                     }
                          
-                        heroImage.current.style.transform = "translate(-"+ currentImageTransform + "%, " + (window.scrollY )/9 + "%)";
+                        heroImage.current.style.transform = "translate(-"+ currentImageTransform + "%, " + (window.scrollY )/30 + "%)";
 
                         if (window.scrollY > 700 && window.scrollY > 900 && postHeading.current){
                             postHeading.current.style.transform = "translateY(0%)"; 
@@ -158,7 +158,7 @@ if (currentPost){
     getFigures();
     getNextPost();  
 
-    window.addEventListener('resize', ()=>reportWindowSize(heroImage));
+        // window.addEventListener('resize', ()=>reportWindowSize(heroImage));
     window.addEventListener('scroll', ()=>scrollEffects(heroImageContainer));
 
         return (
@@ -170,11 +170,11 @@ if (currentPost){
                 <link rel="canonical" href="http://mysite.com/example" />
             </Helmet>
 
-            <div className="transition" ref={transition} style={{backgroundColor: currentPost.acf.backgroundcolor}} ></div>
+            <div className="transition" ref={transition} style={{backgroundColor: currentPost.acf.backgroundcolor}} />
             <div style={{backgroundColor: currentPost.acf.backgroundcolor}} className="post-container"> 
                 
                         <div className="post-feature-image2"  ref={heroImageContainer}>
-                            <div className="hero-overlay"></div> 
+                            <div className="hero-overlay"></div>
                             <img className="hero-image hero-transition" 
                             src={currentPost._embedded["wp:featuredmedia"][0].media_details.sizes['1536x1536'].source_url} 
                             ref={onRef}  />

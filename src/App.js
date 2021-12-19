@@ -9,13 +9,14 @@ import { BrowserRouter, Routes, Route} from "react-router-dom";
 import Books from "./components/Books";
 import Book from "./components/Book";
 import About from "./components/About";
+import Posts from "./components/Posts";
 
 
 function App() {
 
-let postUrl = "http://paulurbanski.local/wp-json/wp/v2/posts?_embed";
-let feedUrl = "http://paulurbanski.local/wp-json/wp/v2/feed?per_page=10";
-let booksUrl = "http://paulurbanski.local/wp-json/wp/v2/books?_embed"
+let postUrl = "https://wp.paulurbanski.com/wp-json/wp/v2/posts?_embed";
+let feedUrl = "https://wp.paulurbanski.com/wp-json/wp/v2/feed?_embed";
+let booksUrl = "https://wp.paulurbanski.com//wp-json/wp/v2/books?_embed"
 
 const [posts, setData] = useState([]);
 const [feeds, setFeed] = useState([]);
@@ -60,7 +61,7 @@ const getPosts = ()=>{
 if (isLoading) {
   return (
     <>
-            <h1>Loading data... </h1>
+            <div className={"loading-message"}> Hold on, one sec </div>
     </>
   )
  
@@ -78,12 +79,14 @@ if (isLoading) {
 
       <BrowserRouter >
      <Routes>
-          <Route  path="/" element={<Home posts={posts} />} />
+          <Route  path="/" element={<Home posts={posts} feeds ={feeds} />} />
           <Route path="/post/:postId" element={<Post posts={posts} /> } />
          <Route path="/books" element={<Books books={books} /> } />
          <Route path="/book/:bookId" element={<Book book={books} /> } />
           <Route path="/dispatch" element={<Feed feeds={feeds} /> } />
          <Route path="/about" element={<About /> } />
+         <Route path="/posts" element={<Posts posts={posts} /> } />
+
 
         </Routes>
   </BrowserRouter>

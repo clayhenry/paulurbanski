@@ -10,8 +10,17 @@ const Feed = ({feeds}) => {
     const feedHeading = useRef(null);
 
     useEffect(() => {
+        scrollDocToTop();
         scrollEffects();
     }, []);
+
+    const scrollDocToTop = ()=>{
+        setTimeout(()=>{
+            window.scrollTop = 0;
+            window.scrollTo(0,0);
+            document.documentElement.scrollTop = 0;
+        }, 0)
+    }
 
     const scrollEffects = (() => {
 

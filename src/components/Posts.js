@@ -1,21 +1,25 @@
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {Helmet, HelmetProvider} from "react-helmet-async";
 import React, {useEffect, useRef} from "react";
 import {Navigation} from "./Navigation";
 import {Footer} from "./Footer";
 
-const Home = ({posts, feeds}) => {
+const Posts = ({posts}) => {
     const transition = useRef(null);
-    const feedHeading = useRef(null);
+
     const navigation = useRef(null);
 
     useEffect(() => {
-        scrollEffects();
+        scrollDocToTop();
     }, []);
 
 
-    function goTo(destination) {
-        window.location.href = destination
+    const scrollDocToTop = ()=>{
+        setTimeout(()=>{
+            window.scrollTop = 0;
+            window.scrollTo(0,0);
+            document.documentElement.scrollTop = 0;
+        }, 0)
     }
 
     const scrollEffects = (() => {
@@ -44,22 +48,17 @@ const Home = ({posts, feeds}) => {
                     <title>Paul Urbanski </title>
                     <link rel="canonical" href="http://mysite.com/example"/>
                 </Helmet>
-                <div className="transition" ref={transition} style={{backgroundColor: '#f0f0f0'}}></div>
+                <div className="transition" ref={transition} style={{backgroundColor: '#f0f0f0'}} ></div>
                 <div className="post-container">
-                    <div className="feed-heading heading-transition" ref={feedHeading}>
-                        <div className="post-excerpt">
-                            Visual vignettes from the field. For quick digestion, expressions and motivation. Trying to
-                            keep it updated on regular basis.
-                        </div>
 
-                    </div>
                     <div ref={navigation} className='navigation-container'><Navigation/></div>
                     <div className="feed-body">
-                        <div className="home-post-list">
+                        <div className="home-post-list" style={{marginTop: '200px'}}>
+
                             <ul>
-                                {posts.map((post, i) => {
-                                        if (i < 6) {
-                                            return (
+                                {posts.map((post, i) =>
+
+
                                                 <li key={post.id} className={"item"}>
                                                     <div className={"home-post-title"}>
                                                         <Link to={"/post/" + post.slug}>
@@ -78,38 +77,13 @@ const Home = ({posts, feeds}) => {
                                                         </div>
                                                     </div>
                                                 </li>
-                                            )
-                                        }
-                                    }
+
+
                                 )
                                 }
                             </ul>
 
-                            <div className="next-project">
-                                <div className="home-next-link">
-
-                                    <Link to={"/posts/"}> There's more, see all post &rarr;</Link>
-                                </div>
-                            </div>
-
                         </div>
-
-                        <div className={"home-feed clickable"} onClick={()=>goTo('/dispatch')}>
-                            {feeds.map((feed, i) => {
-                                if(i < 3){
-                                    return(
-                                        <div className={'home-feed-item'} key={feed.id} dangerouslySetInnerHTML={{__html: feed.content['rendered']}}></div>
-                                    )
-                                }
-                            })}
-                        </div>
-                        <div className="next-project">
-                            <div className="home-next-link">
-
-                                <Link to={"/dispatch"}> See all dispatches &rarr;</Link>
-                            </div>
-                        </div>
-                            <br/><br/>
                         <Footer/>
                         <br/><br/>
                     </div>
@@ -120,6 +94,6 @@ const Home = ({posts, feeds}) => {
     )
 }
 
-export default Home;
+export default Posts;
 
 

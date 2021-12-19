@@ -31,8 +31,10 @@ const About = () => {
                     </div>
                     <div ref={navigation} className='navigation-container'><Navigation/></div>
                     <div className="feed-body">
-                        <div className="feed-posts">
-                                    About stuff
+                        <div className="home-post-list">
+                                  <div className={"home-feed" }>
+                                      About stuff
+                                  </div>
 
                         </div>
                         <Footer/>

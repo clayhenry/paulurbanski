@@ -71,7 +71,7 @@ const Books = ({books}) => {
                     </Helmet>
                     <div className="transition" ref={transition} style={{backgroundColor: '#f0f0f0'}}></div>
                     <div className="post-container book-container">
-                        <div className="feed-heading heading-transition" ref={feedHeading}>
+                        <div className="feed-heading heading-transition books-heading" ref={feedHeading}>
                             <div className="post-title">Books</div>
                             <div className="post-excerpt">
                                 If you must stick to the latest react-router-dom v6.0.0, then replace useHistory with
