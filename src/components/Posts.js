@@ -9,18 +9,6 @@ const Posts = ({posts}) => {
 
     const navigation = useRef(null);
 
-    useEffect(() => {
-        scrollDocToTop();
-    }, []);
-
-
-    const scrollDocToTop = ()=>{
-        setTimeout(()=>{
-            window.scrollTop = 0;
-            window.scrollTo(0,0);
-            document.documentElement.scrollTop = 0;
-        }, 0)
-    }
 
     const scrollEffects = (() => {
 
@@ -40,13 +28,12 @@ const Posts = ({posts}) => {
     window.addEventListener('scroll', () => scrollEffects());
     return (
 
-
         <>
             <HelmetProvider>
                 <Helmet>
                     <meta charSet="utf-8"/>
-                    <title>Paul Urbanski </title>
-                    <link rel="canonical" href="http://mysite.com/example"/>
+                    <title>Paul Urbanski - Photography and other visual medium </title>
+                    <link rel="canonical" href="https://paulurbanski.com/stories"/>
                 </Helmet>
                 <div className="transition" ref={transition} style={{backgroundColor: '#f0f0f0'}} ></div>
                 <div className="post-container">
@@ -61,7 +48,7 @@ const Posts = ({posts}) => {
 
                                                 <li key={post.id} className={"item"}>
                                                     <div className={"home-post-title"}>
-                                                        <Link to={"/post/" + post.slug}>
+                                                        <Link to={"/stories/" + post.slug}>
                                                             {post.title['rendered']}
 
                                                             <img

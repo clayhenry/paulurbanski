@@ -30,8 +30,32 @@ const Home = ({posts, feeds}) => {
         if (window.scrollY < 200 && navigation.current && navigation.current.classList.contains("hide-me-now")) {
 
             navigation.current.classList.remove("hide-me-now");
-            navigation.current.classList.add("show-me-now")
-        }});
+            navigation.current.classList.add("show-me-now");
+
+        }
+
+        if (feedHeading.current && feedHeading.current.style) {
+            let opacity = 1 - (window.scrollY / 200)
+            if (opacity <= 1) {
+                feedHeading.current.style.opacity = opacity;
+            }
+
+            feedHeading.current.style.transform = "translateY(" + (window.scrollY * 1.2) + "%)";
+            if (window.scrollY > 700 && window.scrollY > 900) {
+                feedHeading.current.style.transform = "translateY(-10%)";
+            }
+            if (window.scrollY > 400) {
+                feedHeading.current.classList.add("hide-me-now");
+                feedHeading.current.classList.remove("show-me-now");
+            }
+
+            if (window.scrollY < 400) {
+                feedHeading.current.classList.remove("hide-me-now");
+                feedHeading.current.classList.add("show-me-now")
+            }
+        }
+
+    });
 
     window.addEventListener('scroll', () => scrollEffects());
     return (
@@ -41,15 +65,15 @@ const Home = ({posts, feeds}) => {
             <HelmetProvider>
                 <Helmet>
                     <meta charSet="utf-8"/>
-                    <title>Paul Urbanski </title>
-                    <link rel="canonical" href="http://mysite.com/example"/>
+                    <title>Paul Urbanski - Photography and stories from Western Canada </title>
+                    <link rel="canonical" href="https://paulurbanski.com"/>
                 </Helmet>
                 <div className="transition" ref={transition} style={{backgroundColor: '#f0f0f0'}}></div>
                 <div className="post-container">
-                    <div className="feed-heading heading-transition" ref={feedHeading}>
+                    <div className="feed-heading heading-transition" ref={feedHeading} style={{top: '25%'}}>
                         <div className="post-excerpt">
-                            Visual vignettes from the field. For quick digestion, expressions and motivation. Trying to
-                            keep it updated on regular basis.
+                            Personal photography and stories from the desk of Paul Urbanski. Here, I feature fiction and non fiction stories,
+                            posts from my home town in Western Canada, and family life... <a href={'/about'}>Read more here.</a>
                         </div>
 
                     </div>
@@ -62,7 +86,7 @@ const Home = ({posts, feeds}) => {
                                             return (
                                                 <li key={post.id} className={"item"}>
                                                     <div className={"home-post-title"}>
-                                                        <Link to={"/post/" + post.slug}>
+                                                        <Link to={"/stories/" + post.slug}>
                                                             {post.title['rendered']}
 
                                                             <img
@@ -70,9 +94,7 @@ const Home = ({posts, feeds}) => {
                                                                 alt=""/>
                                                         </Link>
                                                         <div className="post-category home-category">
-
                                                             From {post.acf.category}
-
                                                         </div>
                                                         <div>
                                                         </div>
@@ -88,7 +110,7 @@ const Home = ({posts, feeds}) => {
                             <div className="next-project">
                                 <div className="home-next-link">
 
-                                    <Link to={"/posts/"}> There's more, see all post &rarr;</Link>
+                                    <Link to={"/stories"}> There's more, see all stories &rarr;</Link>
                                 </div>
                             </div>
 

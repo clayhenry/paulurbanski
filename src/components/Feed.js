@@ -10,17 +10,9 @@ const Feed = ({feeds}) => {
     const feedHeading = useRef(null);
 
     useEffect(() => {
-        scrollDocToTop();
         scrollEffects();
     }, []);
 
-    const scrollDocToTop = ()=>{
-        setTimeout(()=>{
-            window.scrollTop = 0;
-            window.scrollTo(0,0);
-            document.documentElement.scrollTop = 0;
-        }, 0)
-    }
 
     const scrollEffects = (() => {
 
@@ -70,12 +62,12 @@ const Feed = ({feeds}) => {
                 <HelmetProvider>
                     <Helmet>
                         <meta charSet="utf-8"/>
-                        <title>Dispatch by Paul Urbanski</title>
-                        <link rel="canonical" href="http://mysite.com/example"/>
+                        <title>Dispatch by Paul Urbanski - Photography</title>
+                        <link rel="canonical" href="https://paulurbanski.com/dispatch"/>
                     </Helmet>
                     <div className="transition" ref={transition} style={{backgroundColor: '#f0f0f0'}}></div>
                     <div className="post-container">
-                        <div className="feed-heading heading-transition" ref={feedHeading}>
+                        <div className="feed-heading heading-transition" ref={feedHeading} style={{top: '25%'}} >
                             <div className="post-title">Dispatch</div>
                             <div className="post-excerpt">
                              Visual vignettes from the field. For quick digestion, expressions and motivation. Trying to keep it updated on regular basis.

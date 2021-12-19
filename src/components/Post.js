@@ -30,7 +30,6 @@ const Post = ({posts}) => {
       }, []);
 
     useEffect(() => {
-        scrollDocToTop();
           if (posts.length > 0){
             setCurrentPost(posts.filter((p)=> p.slug == postId)[0]);
           }
@@ -41,13 +40,7 @@ const Post = ({posts}) => {
     let currentImageTransform = 0
     let appliedHidenClassTransition = false;
 
-const scrollDocToTop = ()=>{
-    setTimeout(()=>{
-        window.scrollTop = 0;
-        window.scrollTo(0,0); 
-        document.documentElement.scrollTop = 0;
-    }, 0)
-}
+
     
 const reportWindowSize = () => {
 
@@ -198,7 +191,7 @@ if (currentPost){
                   
                     <div className="next-link">
                         <div className="divider" style={divider} ></div>
-                            <Link to={"/post/" + nextPost.slug} style={{color: currentPost.acf.navigationtextcolor}}> Thanks for viewing, see next post &rarr;</Link>
+                            <Link to={"/stories/" + nextPost.slug} style={{color: currentPost.acf.navigationtextcolor}}> Thanks for viewing, see next &rarr;</Link>
                         <div className="divider" style={divider} ></div>
                     </div>
                      <Footer />

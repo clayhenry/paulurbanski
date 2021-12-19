@@ -10,9 +10,9 @@ const Books = ({books}) => {
     const navigation = useRef(null);
     const feedHeading = useRef(null);
 
-    useEffect(() => {
-        scrollEffects();
-    }, []);
+    // useEffect(() => {
+    //     scrollEffects();
+    // }, []);
 
     const navigate = useNavigate();
     const goTo = (destination) => navigate('/book/' + destination);
@@ -59,14 +59,13 @@ const Books = ({books}) => {
     })
 
     if (books) {
-
         window.addEventListener('scroll', () => scrollEffects());
         return (
             <>
                 <HelmetProvider>
                     <Helmet>
                         <meta charSet="utf-8"/>
-                        <title>Photography Books by Paul Urbanski from Western Canada</title>
+                        <title>Photography Books and Magazines by Paul Urbanski</title>
                         <link rel="canonical" href="https://paulurbanski.com/books"/>
                     </Helmet>
                     <div className="transition" ref={transition} style={{backgroundColor: '#f0f0f0'}}></div>
@@ -74,8 +73,7 @@ const Books = ({books}) => {
                         <div className="feed-heading heading-transition books-heading" ref={feedHeading}>
                             <div className="post-title">Books</div>
                             <div className="post-excerpt">
-                                If you must stick to the latest react-router-dom v6.0.0, then replace useHistory with
-                                useNavigate.
+                          Self-published low-volume books, magazines or zines. These tend to be experimental or personal.
                             </div>
                         </div>
                         <div ref={navigation} className='navigation-container'><Navigation/></div>

@@ -5,9 +5,21 @@ html {
 
 body {
     /* overflow-x: hidden; */
-    overflow-y: scroll;
+    /*overflow-y: scroll;*/
     margin: 0;
     padding: 0;
+}
+
+a {
+    color: black;
+
+}
+
+.paul-image {
+    width: 150px !important;
+    height: 150px !important;
+    border-radius: 100%;
+    margin-right: 20px;
 }
 
 .clickable {
@@ -602,6 +614,14 @@ figure ul {
     grid-template-columns: 50% 50%;
 }
 
+.about-feed {
+    padding: 20px 0;
+    border-top: 1px solid #e1e1e1;
+    border-bottom: 1px solid #e1e1e1;
+    display: grid;
+    grid-template-columns: 170px 75%;
+}
+
 .home-feed-item {
     /*height: 200px;*/
     /*width: 50%;*/
@@ -661,6 +681,11 @@ display: none;
 
 
 @media only screen and (max-width: 600px) {
+
+    .about-feed {
+        display: flex;
+        /*grid-template-columns: 100px 75%;*/
+    }
 
     .home-feed, .home-post-list ul, .home-post-list ul li {
         width: 90%;
