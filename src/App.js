@@ -49,7 +49,7 @@ function App() {
     if (isLoading) {
         return (
             <>
-                <div className={"loading-message"}> Hold on, one sec</div>
+                <div className={"loading-message"}> Hold on, getting ready</div>
             </>
         )
 
