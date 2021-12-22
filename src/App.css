@@ -170,9 +170,18 @@ figure ul {
 }
 
 .blocks-gallery-item figure img {
-    width: 95%;
+    /*width: auto;*/
+    /*height: 500px;*/
+    display: block;
+    max-width: 721px;
+    max-height: 478px;
+    width: auto;
+    height: auto;
 }
 
+.double-width img {
+    width: 100% !important; ;
+}
 
 .post-body p {
     padding: 0 150px;
@@ -681,6 +690,15 @@ display: none;
 
 
 @media only screen and (max-width: 600px) {
+
+    .blocks-gallery-grid {
+        flex-wrap: wrap !important;
+    }
+    .blocks-gallery-item figure img {
+        width: 100%;
+        height: auto !important;
+        max-height: 100% !important;
+    }
 
     .about-feed {
         display: flex;
