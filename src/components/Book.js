@@ -56,7 +56,7 @@ const Book = ({book}) => {
                 </div>
 
 
-                <div className="post-heading heading-transition"  >
+                <div className="post-heading book-heading heading-transition"  >
                     <div className="post-title"> {currentBook.title['rendered']}</div>
                 </div>
                 <div className="post-body book-body book-element">

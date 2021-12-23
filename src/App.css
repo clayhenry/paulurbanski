@@ -196,6 +196,20 @@ figure ul {
     transform: translateY(-15%);
 }
 
+.book-body p {
+    opacity: 1!important;
+    text-align: center;
+
+    margin: 0px auto;
+}
+
+.book-body .wp-block-gallery {
+padding: 0 !important;
+}
+.book-body .wp-block-image {
+    padding: 0 !important;
+}
+
 .post-body img {
     width: 100%;
     height: auto;
@@ -259,6 +273,10 @@ figure ul {
     top: 0;
     z-index: 1;
     opacity: 0.1;
+}
+
+.book-heading  {
+    top: 25% !important;
 }
 
 .post-heading {
@@ -535,18 +553,10 @@ figure ul {
     opacity: 1;
 }
 
-.book-element {
-    /*margin-top: -300px;*/
-}
 
 .book-item-element {
-    height: 45vh;
+    height: 35vh;
 }
-
-.book-container {
-    /*height: 45vh;*/
-}
-
 
 .home-post-list {
     width: 100%;
@@ -690,6 +700,16 @@ display: none;
 
 
 @media only screen and (max-width: 600px) {
+
+    .book-item-element {
+        height: 25vh;
+    }
+
+    .book-body p {
+        opacity: 1!important;
+        text-align: center;
+        margin: 0px auto !important;
+    }
 
     .blocks-gallery-grid {
         flex-wrap: wrap !important;
