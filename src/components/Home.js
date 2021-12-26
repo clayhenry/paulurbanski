@@ -72,7 +72,7 @@ const Home = ({posts, feeds}) => {
                 <div className="post-container">
                     <div className="feed-heading heading-transition" ref={feedHeading} style={{top: '25%'}}>
                         <div className="post-excerpt">
-                            Personal photography and stories from the desk of Paul Urbanski. Here, I feature fiction and non fiction stories,
+                            Personal photography and stories from Paul Urbanski. Here, I feature fiction and non fiction stories,
                             posts from my home town in Western Canada, and family life... <a href={'/about'}>Read more here.</a>
                         </div>
 
