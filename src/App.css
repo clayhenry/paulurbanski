@@ -678,6 +678,12 @@ padding: 0 !important;
     display: contents;
 }
 
+.wp-block-video {
+    text-align: center;
+}
+.wp-block-video video {
+    width: 80%;
+}
 
 
 .home-feed .blocks-gallery-grid  img {

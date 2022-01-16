@@ -87,8 +87,8 @@ const Home = ({posts, feeds}) => {
                                                 <li key={post.id} className={"item"}>
                                                     <div className={"home-post-title"}>
                                                         <Link to={"/stories/" + post.slug}>
-                                                            {post.title['rendered']}
-
+                                                            <span dangerouslySetInnerHTML={{__html: post.title['rendered']}} ></span> 
+                                                        
                                                             <img
                                                                 src={post._embedded["wp:featuredmedia"][0].media_details.sizes['thumbnail'].source_url}
                                                                 alt=""/>
@@ -118,7 +118,7 @@ const Home = ({posts, feeds}) => {
 
                         <div className={"home-feed clickable"} onClick={()=>goTo('/dispatch')}>
                             {feeds.map((feed, i) => {
-                                if(i < 3){
+                                if(i < 5){
                                     return(
                                         <div className={'home-feed-item'} key={feed.id} dangerouslySetInnerHTML={{__html: feed.content['rendered']}}></div>
                                     )

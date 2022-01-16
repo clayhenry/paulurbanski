@@ -84,7 +84,7 @@ const Feed = ({feeds}) => {
                                                 {/* <div className="feed-item-title">{feed.title['rendered']}</div> */}
                                                 <div dangerouslySetInnerHTML={{__html: feed.content['rendered']}}></div>
                                                 <div
-                                                    className="feed-datetime">{new Date().toDateString('', feed.date)}</div>
+                                                    className="feed-datetime">{ new Date(feed.date).toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric' })}</div>
                                             </div>
                                         </div>
                                     )

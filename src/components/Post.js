@@ -165,7 +165,7 @@ if (currentPost){
 
             <div className="transition" ref={transition} style={{backgroundColor: currentPost.acf.backgroundcolor}} />
             <div style={{backgroundColor: currentPost.acf.backgroundcolor}} className="post-container"> 
-                
+                {console.log(currentPost._embedded["wp:featuredmedia"][0].media_details.sizes)}
                         <div className="post-feature-image2"  ref={heroImageContainer}>
                             <div className="hero-overlay"></div>
                             <img className="hero-image hero-transition" 
@@ -175,7 +175,7 @@ if (currentPost){
                         <div ref={navigation} style={{color: currentPost.acf.navigationtextcolor}}> <Navigation /> </div>
                         
                     <div className="post-heading heading-transition" style={{color: currentPost.acf.exerpttextcolor}} ref={postHeading} >
-                        <div className="post-title"> {currentPost.title['rendered']}</div>
+                        <div className="post-title" dangerouslySetInnerHTML={{__html: currentPost.title['rendered']}} ></div>
                         <div className="post-excerpt" dangerouslySetInnerHTML={{__html: currentPost.excerpt['rendered']}}></div>
                         <div className="post-category">
                         <div style={box} className="divider-category"></div>    
