@@ -160,7 +160,7 @@ if (currentPost){
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>{currentPost.title['rendered']} by Paul Urbanski </title>
-                <link rel="canonical" href="http://mysite.com/example" />
+            
             </Helmet>
 
             <div className="transition" ref={transition} style={{backgroundColor: currentPost.acf.backgroundcolor}} />

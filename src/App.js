@@ -10,6 +10,7 @@ import Books from "./components/Books";
 import Book from "./components/Book";
 import About from "./components/About";
 import Posts from "./components/Posts";
+import Drafts from './components/Drafts';
 
 
 function App() {
@@ -74,6 +75,7 @@ function App() {
                             <Route path="/dispatch" element={<Feed feeds={feeds}/>}/>
                             <Route path="/about" element={<About/>}/>
                             <Route path="/stories" element={<Posts posts={posts}/>}/>
+                            <Route path="/drafts" element={<Drafts posts={posts}/>}/>
 
 
                         </Routes>

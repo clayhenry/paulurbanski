@@ -82,7 +82,8 @@ const Home = ({posts, feeds}) => {
                         <div className="home-post-list">
                             <ul>
                                 {posts.map((post, i) => {
-                                        if (i < 6) {
+                                    
+                                        if (i < 6 & post.acf.private[0] != 'yes')  {
                                             return (
                                                 <li key={post.id} className={"item"}>
                                                     <div className={"home-post-title"}>

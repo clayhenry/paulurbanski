@@ -684,9 +684,14 @@ padding: 0 !important;
 
 .wp-block-video {
     text-align: center;
+    
 }
 .wp-block-video video {
-    width: 80%;
+    width: 100%;
+}
+
+.feed-body .wp-block-video {
+    margin: 0;
 }
 
 

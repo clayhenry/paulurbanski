@@ -4,7 +4,7 @@ import React, {useEffect, useRef} from "react";
 import {Navigation} from "./Navigation";
 import {Footer} from "./Footer";
 
-const Posts = ({posts}) => {
+const Drafts = ({posts}) => {
     const transition = useRef(null);
 
     const navigation = useRef(null);
@@ -45,7 +45,7 @@ const Posts = ({posts}) => {
                             <ul>
                                 {posts.map((post, i) =>
                                             {
-                                            if(post.acf.private[0] != 'yes'){
+                                            if(post.acf.private[0] == 'yes'){
                                                 return(
                                                 <li key={post.id} className={"item"}>
                                                     <div className={"home-post-title"}>
@@ -84,6 +84,6 @@ const Posts = ({posts}) => {
     )
 }
 
-export default Posts;
+export default Drafts;
 
 
