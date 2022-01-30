@@ -206,6 +206,10 @@ figure ul {
 .book-body .wp-block-gallery {
 padding: 0 !important;
 }
+
+.wp-block-gallery .wp-block-image {
+    padding: 80px 2px;
+}
 .book-body .wp-block-image {
     padding: 0 !important;
 }
