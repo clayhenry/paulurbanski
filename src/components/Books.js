@@ -85,7 +85,7 @@ const Books = ({books}) => {
                                         <div key={book.id} className="feed-post-item book-post-item">
                                             <div className={'books-item clickable'} onClick={()=>goTo(book.slug)} >
                                                 <div className='book-item-contents'>
-                                                    <img src={book._embedded["wp:featuredmedia"][0].media_details.sizes['medium'].source_url} />
+                                                    <img src={book._embedded["wp:featuredmedia"][0].media_details.sizes['large'].source_url} />
                                                     <div className={'books-item-title'} > {book.title['rendered']}</div>
                                                 </div>
 

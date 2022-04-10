@@ -45,7 +45,7 @@ const Post = ({posts}) => {
 const reportWindowSize = () => {
 
         if (heroImage.current){
-                console.log("image");
+   
             let margin = (heroImage.current.width - window.innerWidth);
             currentImageTransform = (margin/100)*3
             heroImage.current.style.transform = "translate( -" + (margin/100)*3 + "%, 0)";
@@ -165,12 +165,13 @@ if (currentPost){
 
             <div className="transition" ref={transition} style={{backgroundColor: currentPost.acf.backgroundcolor}} />
             <div style={{backgroundColor: currentPost.acf.backgroundcolor}} className="post-container"> 
-                {console.log(currentPost._embedded["wp:featuredmedia"][0].media_details.sizes)}
+             
                         <div className="post-feature-image2"  ref={heroImageContainer}>
                             <div className="hero-overlay"></div>
-                            <img className="hero-image hero-transition" 
+                            <div className="hero-image hero-transition hero-bcg "  ref={onRef}  style={{ backgroundImage: 'url(' +currentPost._embedded["wp:featuredmedia"][0].media_details.sizes['1536x1536'].source_url + ')' }}></div>
+                            {/* <img className="hero-image hero-transition" 
                             src={currentPost._embedded["wp:featuredmedia"][0].media_details.sizes['1536x1536'].source_url} 
-                            ref={onRef}  />
+                            ref={onRef}  /> */}
                             </div>
                         <div ref={navigation} style={{color: currentPost.acf.navigationtextcolor}}> <Navigation /> </div>
                         

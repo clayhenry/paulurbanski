@@ -3,8 +3,9 @@ import {Helmet, HelmetProvider} from "react-helmet-async";
 import React, {useEffect, useRef} from "react";
 import {Navigation} from "./Navigation";
 import {Footer} from "./Footer";
+import Books from "./Books";
 
-const Home = ({posts, feeds}) => {
+const Home = ({posts, feeds, books}) => {
     const transition = useRef(null);
     const feedHeading = useRef(null);
     const navigation = useRef(null);
@@ -132,6 +133,27 @@ const Home = ({posts, feeds}) => {
                                 <Link to={"/dispatch"}> See all dispatches &rarr;</Link>
                             </div>
                         </div>
+                    
+                        <div className={"home-books clickable"}>
+                            {books.map((book, i) => {
+                                if(i < 5){
+                                    return(
+                                        <Link to={"/book/" + book.slug}>
+                                        <img className={"home-book-image"}
+                                            src={book._embedded["wp:featuredmedia"][0].media_details.sizes['medium_large'].source_url}
+                                            alt=""/>
+                                    </Link>
+                                    )
+                                }
+                            })}
+                        </div>
+                        <div className="next-project">
+                            <div className="home-next-link">
+
+                                <Link to={"/books"}> See all books &rarr;</Link>
+                            </div>
+                        </div>
+
                             <br/><br/>
                         <Footer/>
                         <br/><br/>

@@ -50,7 +50,7 @@ function App() {
     if (isLoading) {
         return (
             <>
-                <div className={"loading-message"}> Hold on, getting ready</div>
+                <div className={"loading-message"}> Hold on</div>
             </>
         )
 
@@ -68,7 +68,7 @@ function App() {
 
                     <BrowserRouter>
                         <Routes>
-                            <Route path="/" element={<Home posts={posts} feeds={feeds}/>}/>
+                            <Route path="/" element={<Home posts={posts} feeds={feeds} books={books}/>}/>
                             <Route path="/stories/:postId" element={<Post posts={posts}/>}/>
                             <Route path="/books" element={<Books books={books}/>}/>
                             <Route path="/book/:bookId" element={<Book book={books}/>}/>
