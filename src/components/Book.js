@@ -50,7 +50,10 @@ const Book = ({book}) => {
                         <link rel="canonical" href={'https://paulurbanski.com/book/' + currentBook.title['rendered']} />
                     </Helmet>
 
-                <div className="transition" ref={transition} style={{backgroundColor: '#cad2db'}}></div>
+
+
+<div style={{backgroundColor: currentBook.acf.backgroundcolor,color: currentBook.acf.bodytextcolor}}>
+                <div className="transition" ref={transition} ></div>
                 <div className="post-container book-item-element">
                     <div ref={navigation}> <Navigation /> </div>
                 </div>
@@ -59,13 +62,14 @@ const Book = ({book}) => {
                 <div className="post-heading book-heading heading-transition"  >
                     <div className="post-title"> {currentBook.title['rendered']}</div>
                 </div>
-                <div className="post-body book-body book-element">
+                <div className="post-body book-body book-element" style={{backgroundColor: currentBook.acf.backgroundcolor,color: currentBook.acf.bodytextcolor}}>
                     <span dangerouslySetInnerHTML={{__html: currentBook.content['rendered']}}></span>
                     <Footer/>
                 </div>
-
+                </div>
                 </HelmetProvider>
                 </>
+                
 
         )
 

@@ -120,7 +120,7 @@ const Home = ({posts, feeds, books}) => {
 
                         <div className={"home-feed clickable"} onClick={()=>goTo('/dispatch')}>
                             {feeds.map((feed, i) => {
-                                if(i < 5){
+                                if(i < 6){
                                     return(
                                         <div className={'home-feed-item'} key={feed.id} dangerouslySetInnerHTML={{__html: feed.content['rendered']}}></div>
                                     )

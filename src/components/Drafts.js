@@ -74,7 +74,7 @@ const Drafts = ({posts}) => {
                             </ul>
 
                         </div>
-                        <Footer/>
+                        <Footer/>   
                         <br/><br/>
                     </div>
                 </div>

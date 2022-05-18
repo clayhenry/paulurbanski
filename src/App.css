@@ -208,7 +208,7 @@ padding: 0 !important;
 }
 
 .wp-block-gallery .wp-block-image {
-    padding: 80px 2px;
+    padding: 15px 2px;
 }
 .book-body .wp-block-image {
     padding: 0 !important;
@@ -217,7 +217,7 @@ padding: 0 !important;
 .post-body img {
     width: 100%;
     height: auto;
-    max-width: 1024px
+    max-width: 980px
 }
 
 .feed-body p {
@@ -281,7 +281,7 @@ padding: 0 !important;
     height: 100%;
     top: 0;
     z-index: 1;
-    opacity: 0.1;
+    opacity: 0.3;
 }
 
 .book-heading  {
@@ -671,6 +671,13 @@ padding: 0 !important;
 
 .home-feed-item p {
     display: none;
+}
+
+.home-feed-item figure {
+    display: none;
+}
+.home-feed-item figure:first-child {
+    display: block;
 }
 
 .home-feed .blocks-gallery-grid{

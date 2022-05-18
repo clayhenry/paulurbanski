@@ -50,7 +50,7 @@ function App() {
     if (isLoading) {
         return (
             <>
-                <div className={"loading-message"}> Hold on</div>
+                <div className={"loading-message"}> <span style={{fontSize: "1.2em"}}> Paul Urbanski </span><br></br> Personal photography and stories</div>
             </>
         )
 

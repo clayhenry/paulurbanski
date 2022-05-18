@@ -30,6 +30,7 @@ const Post = ({posts}) => {
       }, []);
 
     useEffect(() => {
+    
           if (posts.length > 0){
             setCurrentPost(posts.filter((p)=> p.slug == postId)[0]);
           }
@@ -53,12 +54,13 @@ const reportWindowSize = () => {
 
       }
 const getNextPost =()=>{
-        let index = posts.findIndex((i) => i.id == currentPost.id );
-    
-        if (posts[index + 1]){
-            nextPost = posts[index + 1]
+        let updatedPosts = posts.filter((p)=> p.acf.private[0] == "no");
+        let index  = updatedPosts.findIndex((i) => i.id == currentPost.id);
+
+        if (updatedPosts[index + 1]){ 
+            nextPost = updatedPosts[index + 1]
         } else {
-            nextPost = posts[0]
+            nextPost = updatedPosts[0]
         }
 }
 
@@ -192,7 +194,7 @@ if (currentPost){
                   
                     <div className="next-link">
                         <div className="divider" style={divider} ></div>
-                            <Link to={"/stories/" + nextPost.slug} style={{color: currentPost.acf.navigationtextcolor}}> Thanks for viewing, see next &rarr;</Link>
+                            <Link to={"/stories/" + nextPost.slug} style={{color: currentPost.acf.bottomnavigationcolor}}> Thanks for viewing, see next &rarr;</Link>
                         <div className="divider" style={divider} ></div>
                     </div>
                      <Footer />

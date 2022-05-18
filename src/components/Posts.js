@@ -50,7 +50,8 @@ const Posts = ({posts}) => {
                                                 <li key={post.id} className={"item"}>
                                                     <div className={"home-post-title"}>
                                                         <Link to={"/stories/" + post.slug}>
-                                                            {post.title['rendered']}
+                                                        
+                                                        <span dangerouslySetInnerHTML={{__html: post.title['rendered']}} ></span> 
 
                                                             <img
                                                                 src={post._embedded["wp:featuredmedia"][0].media_details.sizes['thumbnail'].source_url}
