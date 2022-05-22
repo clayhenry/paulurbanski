@@ -385,6 +385,7 @@ padding: 0 !important;
     animation: hide-me-now;
     animation-duration: 0.7s;
     animation-fill-mode: forwards;
+
 }
 
 .show-me-now {
@@ -900,21 +901,27 @@ display: none;
 }
 
 
-@keyframes hide-me-now {
+@keyframes hide-me-now { 
     from {
         opacity: 1;
+        pointer-events: auto;
+        
+    
     }
     to {
         opacity: 0;
+        pointer-events: none;
     }
 }
 
 @keyframes show-me-now {
     from {
         opacity: 0;
+        pointer-events: none;
     }
     to {
         opacity: 1;
+        pointer-events: auto;
     }
 }
 
