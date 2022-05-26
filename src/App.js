@@ -15,9 +15,9 @@ import Drafts from './components/Drafts';
 
 function App() {
 
-    let postUrl = "https://wp.paulurbanski.com/wp-json/wp/v2/posts?_embed";
-    let feedUrl = "https://wp.paulurbanski.com/wp-json/wp/v2/feed?_embed";
-    let booksUrl = "https://wp.paulurbanski.com//wp-json/wp/v2/books?_embed"
+    let postUrl = "https://wp.paulurbanski.com/wp-json/wp/v2/posts?_embed&per_page=30";
+    let feedUrl = "https://wp.paulurbanski.com/wp-json/wp/v2/feed?_embed&per_page=30";
+    let booksUrl = "https://wp.paulurbanski.com//wp-json/wp/v2/books?_embed&per_page=30"
 
     const [posts, setData] = useState([]);
     const [feeds, setFeed] = useState([]);

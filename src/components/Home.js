@@ -4,6 +4,7 @@ import React, {useEffect, useRef} from "react";
 import {Navigation} from "./Navigation";
 import {Footer} from "./Footer";
 import Books from "./Books";
+import Carus from "./carusele";
 
 const Home = ({posts, feeds, books}) => {
     const transition = useRef(null);
@@ -118,7 +119,7 @@ const Home = ({posts, feeds, books}) => {
 
                         </div>
 
-                        <div className={"home-feed clickable"} onClick={()=>goTo('/dispatch')}>
+                        {/* <div className={"home-feed clickable"} onClick={()=>goTo('/dispatch')}>
                             {feeds.map((feed, i) => {
                                 if(i < 6){
                                     return(
@@ -126,16 +127,19 @@ const Home = ({posts, feeds, books}) => {
                                     )
                                 }
                             })}
-                        </div>
-                        <div className="next-project">
+                        </div> */}
+                        {/* <div className="next-project">
                             <div className="home-next-link">
 
                                 <Link to={"/dispatch"}> See all dispatches &rarr;</Link>
                             </div>
-                        </div>
+                        </div> */}
+
+                        
+                        <Carus list={books}></Carus>
                     
                         <div className={"home-books clickable"}>
-                            {books.map((book, i) => {
+                            {/* {books.map((book, i) => {
                                 if(i < 5){
                                     return(
                                         <Link to={"/book/" + book.slug}>
@@ -145,7 +149,7 @@ const Home = ({posts, feeds, books}) => {
                                     </Link>
                                     )
                                 }
-                            })}
+                            })} */}
                         </div>
                         <div className="next-project">
                             <div className="home-next-link">

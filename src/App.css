@@ -15,6 +15,23 @@ a {
 
 }
 
+.carusele {
+
+    white-space: nowrap;
+    width: 1040px;
+    outline: 1px solid green;
+    overflow: hidden;
+}
+
+.carusele-items {
+    height: 200px;
+    width: 240px;
+    padding: 10px;
+    overflow: hidden;
+    display: inline-block;
+    outline: 1px solid red;
+}
+
 .paul-image {
     width: 150px !important;
     height: 150px !important;
