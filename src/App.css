@@ -18,9 +18,15 @@ a {
 .carusele {
 
     white-space: nowrap;
-    width: 1040px;
+    width: 520px;       
     outline: 1px solid green;
     overflow: hidden;
+}
+
+.carusele-container {
+    outline: 1px solid yellow;
+    display: inline-block;  
+    transition: all 1s;
 }
 
 .carusele-items {
