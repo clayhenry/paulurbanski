@@ -55,14 +55,16 @@ const Carus = (list) => {
 
    return  (
 
-    
-    <div className="carusele" ref={carusele}>
+    <div className="carusele" >
 
+<div className="carusele-navigation carusele-left">
 {diablePrev
-    ? (<div>Prev Disabled</div>) 
-    : (<div className="clickable" onClick={prev} >Prev </div>)
+    ? (<div className="carusele-nav-arrow carusele-disabled">&#10094;</div>) 
+    : (<div className="clickable carusele-nav-arrow" onClick={prev} >&#10094; </div>)
 }
-        
+</div>
+
+    <div className="carusele-object" ref={carusele}>  
 
 <div className="carusele-container"  style={{marginLeft: -currentPosition + 'px'}}>
     {list.list.map((book, i) => {
@@ -82,13 +84,15 @@ const Carus = (list) => {
     })}
     </div>
 
-{diableNext
-    ? (<div>Next Disabled</div>) 
-    : (<div className="clickable" onClick={next} >Next </div>)
-}
-
-    
     </div>
+
+    <div className="carusele-navigation carusele-right">
+{diableNext
+    ? (<div className="carusele-nav-arrow carusele-disabled">&#10095;</div>) 
+    : (<div className="clickable carusele-nav-arrow" onClick={next} >&#10095;</div>)
+}
+</div>
+</div>
    )
 
 

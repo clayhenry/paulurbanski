@@ -14,17 +14,24 @@ a {
     color: black;
 
 }
-
 .carusele {
 
+    margin: 0 auto;
+    width: 865px;
+    position: relative;
+}
+
+.carusele-object {
+
     white-space: nowrap;
-    width: 520px;       
-    outline: 1px solid green;
+    width: 780px;       
+
     overflow: hidden;
+    margin: 0 50px 0 50px;
 }
 
 .carusele-container {
-    outline: 1px solid yellow;
+
     display: inline-block;  
     transition: all 1s;
 }
@@ -35,7 +42,21 @@ a {
     padding: 10px;
     overflow: hidden;
     display: inline-block;
-    outline: 1px solid red;
+
+}
+
+.carusele-navigation {
+    position: absolute;
+    top: 40%;
+}
+.carusele-left {
+    left:0
+}
+.carusele-right {
+    right:0
+}
+.carusele-disabled {
+    color: lightgray;
 }
 
 .paul-image {
@@ -55,6 +76,14 @@ a {
     padding: 100px 50px;
 }
 
+.carusele-disabled {
+    color: lightgray;
+}
+
+.carusele-nav-arrow {
+    font-size: 3em;
+}
+
 .loading-message:after {
     overflow: hidden;
     display: inline-block;
@@ -64,6 +93,7 @@ a {
     content: "\2026"; /* ascii code for the ellipsis character */
     width: 0;
 }
+
 
 @keyframes ellipsis {
     to {
@@ -766,6 +796,52 @@ display: none;
 
 @media only screen and (max-width: 700px) {
 
+
+    .carusele {
+      
+        margin: 0 auto;
+        width: 365px;
+        position: relative;
+    }
+    
+    .carusele-object {
+    
+        white-space: nowrap;
+        width: 260px;       
+
+        overflow: hidden;
+        margin: 0 50px 0 50px;
+    }
+    
+    .carusele-container {
+        display: inline-block;  
+        transition: all 1s;
+    }
+    
+    .carusele-items {
+        height: 200px;
+        width: 240px;
+        padding: 10px;
+        overflow: hidden;
+        display: inline-block;
+
+    }
+    
+    .carusele-navigation {
+        position: absolute;
+        top: 40%;
+    }
+    .carusele-left {
+        left:0
+    }
+    .carusele-right {
+        right:0
+    }
+    .carusele-disabled {
+        color: lightgray;
+    }
+    
+
     .hero-bcg{
         width: 100%;
         height: 100%;
@@ -775,7 +851,7 @@ display: none;
     }
 
     .home-book-image {
-        width: 200px !important;
+        width: 262px !important;
     }
 
     .home-books {
